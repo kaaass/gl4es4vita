@@ -57,7 +57,7 @@
     </ClCompile>
     <Link>
       <GenerateSnMapFile>FullMapFile</GenerateSnMapFile>
-      <AdditionalDependencies>libSceRtcUser_stub.a;libIMGEGL_stub.a</AdditionalDependencies>
+      <AdditionalDependencies>libSceRtcUser_stub.a</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SCE_PSP2_SDK_DIR)\target\lib\vdsuite;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>

@@ -279,7 +279,7 @@ void APIENTRY_GL4ES fpe_oldprogram(fpe_state_t* state) {
 
     glstate->fpe->vert = gl4es_glCreateShader(GL_VERTEX_SHADER);
     if(state->vertex_prg_id) {
-        gl4es_glShaderSource(glstate->fpe->vert, 1, fpe_CustomVertexShader(old_vtx->shader->source, state), NULL);
+        gl4es_glShaderSource(glstate->fpe->vert, 1, fpe_CustomVertexShader(old_vtx->shader->source, state, state->fragment_prg_id?0:1), NULL);
         gl4es_glCompileShader(glstate->fpe->vert);
         gl4es_glGetShaderiv(glstate->fpe->vert, GL_COMPILE_STATUS, &status);
         if(status!=GL_TRUE) {
@@ -339,7 +339,7 @@ void APIENTRY_GL4ES fpe_oldprogram(fpe_state_t* state) {
             printf("LIBGL: FPE ARB Program link failed: %s\n with vertex %s%s%s%s%s and fragment %s%s%s%s%s\n", 
                 buff, 
                 state->vertex_prg_id?"custom:\n":"default", state->vertex_prg_id?old_vtx->string:"", state->vertex_prg_id?"\nconverted:\n":"", state->vertex_prg_id?old_vtx->shader->source:"", state->vertex_prg_id?"\n":"", 
-                state->fragment_prg_id?"custom:\n":"default", state->vertex_prg_id?old_frg->string:"", state->fragment_prg_id?"\nconverted:\n":"", state->fragment_prg_id?old_vtx->shader->source:"", state->fragment_prg_id?"\n":"");
+                state->fragment_prg_id?"custom:\n":"default", state->fragment_prg_id?old_frg->string:"", state->fragment_prg_id?"\nconverted:\n":"", state->fragment_prg_id?old_frg->shader->source:"", state->fragment_prg_id?"\n":"");
         else
             printf("LIBGL: FPE ARB Program link failed: %s\n", buff);
     }
@@ -429,7 +429,7 @@ program_t* APIENTRY_GL4ES fpe_CustomShader(program_t* glprogram, fpe_state_t* st
     if(fpe->glprogram==NULL) {
         GLint status;
         fpe->vert = gl4es_glCreateShader(GL_VERTEX_SHADER);
-        gl4es_glShaderSource(fpe->vert, 1, fpe_CustomVertexShader(glprogram->last_vert->source, state), NULL);
+        gl4es_glShaderSource(fpe->vert, 1, fpe_CustomVertexShader(glprogram->last_vert->source, state, 0), NULL);
         gl4es_glCompileShader(fpe->vert);
         gl4es_glGetShaderiv(fpe->vert, GL_COMPILE_STATUS, &status);
         if(status!=GL_TRUE) {
@@ -1027,6 +1027,7 @@ void realize_glenv(int ispoint, int first, int count, GLenum type, const void* i
     LOAD_GLES2(glEnableVertexAttribArray)
     LOAD_GLES2(glDisableVertexAttribArray);
     LOAD_GLES2(glVertexAttribPointer);
+    LOAD_GLES2(glVertexAttribIPointer);
     LOAD_GLES2(glVertexAttrib4fv);
     LOAD_GLES2(glUseProgram);
     // update texture state for fpe only
@@ -1449,6 +1450,7 @@ void realize_glenv(int ispoint, int first, int count, GLenum type, const void* i
                         v->size = 4;
                         v->type = GL_FLOAT;
                         v->normalized = 0;
+                        v->integer = 0;
                         v->pointer = scratch->scratch[scratch->size++] = copy_gl_pointer_color_bgra(ptr, w->stride, 4, imin, imax);
                         v->pointer = (char*)v->pointer - imin*4*sizeof(GLfloat);   // adjust for min...
                         v->stride = 0;
@@ -1466,6 +1468,7 @@ void realize_glenv(int ispoint, int first, int count, GLenum type, const void* i
                     v->size = w->size;
                     v->type = w->type;
                     v->normalized = w->normalized;
+                    v->integer = w->integer;
                     v->stride = w->stride;
                     v->real_buffer = w->real_buffer;
                     v->real_pointer = w->real_pointer;
@@ -1475,8 +1478,17 @@ void realize_glenv(int ispoint, int first, int count, GLenum type, const void* i
                 DBG(printf("using Buffer %d\n", v->real_buffer);)
                 bindBuffer(GL_ARRAY_BUFFER, v->real_buffer);
 
-                gles_glVertexAttribPointer(i, v->size, v->type, v->normalized, v->stride, v->pointer);
-                DBG(printf("glVertexAttribPointer(%d, %d, %s, %d, %d, %p)\n", i, v->size, PrintEnum(v->type), v->normalized, v->stride, (GLvoid*)((uintptr_t)v->pointer+((v->buffer)?(uintptr_t)v->buffer->data:0)));)
+                if (v->integer) {
+                    if(gles_glVertexAttribIPointer)
+                        gles_glVertexAttribIPointer(i, v->size, v->type, v->stride, v->pointer);
+                    else
+                        gles_glVertexAttribPointer(i, v->size, v->type, 0, v->stride, v->pointer);
+                    DBG(printf("glVertexAttribIPointer(%d, %d, %s, %d, %p)\n", i, v->size, PrintEnum(v->type), v->stride, (GLvoid*)((uintptr_t)v->pointer+((v->buffer)?(uintptr_t)v->buffer->data:0)));)
+                }
+                else {
+                    gles_glVertexAttribPointer(i, v->size, v->type, v->normalized, v->stride, v->pointer);
+                    DBG(printf("glVertexAttribPointer(%d, %d, %s, %d, %d, %p)\n", i, v->size, PrintEnum(v->type), v->normalized, v->stride, (GLvoid*)((uintptr_t)v->pointer+((v->buffer)?(uintptr_t)v->buffer->data:0)));)
+                }
             }
         } else {
             // single value case

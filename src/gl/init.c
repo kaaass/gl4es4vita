@@ -33,7 +33,7 @@ void fpe_shader_reset_internals();
 
 globals4es_t globals4es = {0};
 
-#if defined(PANDORA) || defined(CHIP)
+#if defined(PANDORA) || defined(CHIP) || defined(GOA_CLONE)
 static void fast_math() {
   // enable Cortex A8 RunFast
    int v = 0;
@@ -385,7 +385,7 @@ void initialize_gl4es() {
     }
 
     if(IsEnvVarTrue("LIBGL_FASTMATH")) {
-#if defined(PANDORA) || defined(CHIP)
+#if defined(PANDORA) || defined(CHIP) || defined(GOA_CLONE)
         SHUT_LOGD("Enable FastMath for cortex-a8\n");
         fast_math();
 #else
@@ -476,7 +476,7 @@ void initialize_gl4es() {
     env(LIBGL_FORCE16BITS, globals4es.force16bits, "Force 16bits textures");
     env(LIBGL_POTFRAMEBUFFER, globals4es.potframebuffer, "Force framebuffers to be on POT size");
 
-    int env_forcenpot=ReturnEnvVarIntDef("LIBGL_FORCENPOT",-1);
+    int env_forcenpot=ReturnEnvVarIntDef("LIBGL_FORCENPOT",0);
     if(env_forcenpot==0 && (hardext.esversion==2 && (hardext.npot==1 || hardext.npot==2))) {
       SHUT_LOGD("Not forcing NPOT support\n");
     } else if(env_forcenpot!=0 || (hardext.esversion==2 && (hardext.npot==1 || hardext.npot==2))) {
@@ -689,6 +689,11 @@ void initialize_gl4es() {
             }
         }
     }
+
+    env(LIBGL_SKIPTEXCOPIES, globals4es.skiptexcopies, "Texture Copies will be skipped");
+    if(GetEnvVarFloat("LIBGL_FB_TEX_SCALE",&globals4es.fbtexscale,0.0f)) {
+      SHUT_LOGD("Framebuffer Textures will be scaled by %.2f\n", globals4es.fbtexscale);
+		}
 }
 
 

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1401
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gl4es", "gl4es.vcxproj", "{108A0468-90E5-46B9-891B-F2D476C50F1A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|PSVita = Debug|PSVita
+		Release|PSVita = Release|PSVita
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{108A0468-90E5-46B9-891B-F2D476C50F1A}.Debug|PSVita.ActiveCfg = Debug|PSVita
+		{108A0468-90E5-46B9-891B-F2D476C50F1A}.Debug|PSVita.Build.0 = Debug|PSVita
+		{108A0468-90E5-46B9-891B-F2D476C50F1A}.Release|PSVita.ActiveCfg = Release|PSVita
+		{108A0468-90E5-46B9-891B-F2D476C50F1A}.Release|PSVita.Build.0 = Release|PSVita
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C7977870-6A0F-4629-BA8D-8D030DBAA074}
+	EndGlobalSection
+EndGlobal

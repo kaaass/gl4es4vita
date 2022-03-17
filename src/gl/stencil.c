@@ -124,6 +124,7 @@ void APIENTRY_GL4ES gl4es_glStencilOp(GLenum fail, GLenum zfail, GLenum zpass) {
     errorGL();
     gles_glStencilOp(fail, zfail, zpass);
 }
+
 AliasExport(void,glStencilOp,,(GLenum fail, GLenum zfail, GLenum zpass));
 
 void APIENTRY_GL4ES gl4es_glStencilOpSeparate(GLenum face, GLenum sfail, GLenum zfail, GLenum zpass) {

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|PSVita">
+      <Configuration>Debug</Configuration>
+      <Platform>PSVita</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|PSVita">
+      <Configuration>Release</Configuration>
+      <Platform>PSVita</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{108A0468-90E5-46B9-891B-F2D476C50F1A}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|PSVita'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|PSVita'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup Condition="'$(DebuggerFlavor)'=='PSVitaDebugger'" Label="OverrideDebuggerDefaults">
+    <!--LocalDebuggerCommand>$(TargetPath)</LocalDebuggerCommand-->
+    <!--LocalDebuggerReboot>false</LocalDebuggerReboot-->
+    <!--LocalDebuggerCommandArguments></LocalDebuggerCommandArguments-->
+    <!--LocalDebuggerTarget></LocalDebuggerTarget-->
+    <!--LocalDebuggerWorkingDirectory>$(ProjectDir)</LocalDebuggerWorkingDirectory-->
+    <!--LocalMappingFile></LocalMappingFile-->
+    <!--LocalRunCommandLine></LocalRunCommandLine-->
+  </PropertyGroup>
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|PSVita'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|PSVita'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|PSVita'">
+    <IncludePath>M:\Yeeeeeeeet\PSVita-Projects\gl4es\include;M:\Yeeeeeeeet\PSVita-Projects\gl4es\src\glx;$(IncludePath)</IncludePath>
+    <TargetName>GL</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|PSVita'">
+    <IncludePath>M:\Yeeeeeeeet\PSVita-Projects\gl4es\include;M:\Yeeeeeeeet\PSVita-Projects\gl4es\src\glx;$(IncludePath)</IncludePath>
+    <TargetName>GL</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|PSVita'">
+    <ClCompile>
+      <PreprocessorDefinitions>GL_GLEXT_PROTOTYPES;NO_GBM;NOEGL;NOX11;NO_LOADER;NO_INIT_CONSTRUCTOR;USE_CLOCK;DEFAULT_ES=2;STATICLIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <ProcessorNumber>16</ProcessorNumber>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <GenerateSnMapFile>FullMapFile</GenerateSnMapFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|PSVita'">
+    <ClCompile>
+      <PreprocessorDefinitions>NO_GBM;NOEGL;NOX11;NO_LOADER;USE_CLOCK;NO_INIT_CONSTRUCTOR;DEFAULT_ES=2;STATICLIB;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <OptimizationLevel>Level2</OptimizationLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <ProcessorNumber>16</ProcessorNumber>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="src\config.h" />
+    <ClInclude Include="src\glx\drmfunc.h" />
+    <ClInclude Include="src\glx\gbmfunc.h" />
+    <ClInclude Include="src\glx\glx_gbm.h" />
+    <ClInclude Include="src\glx\hardext.h" />
+    <ClInclude Include="src\glx\rpi.h" />
+    <ClInclude Include="src\glx\streaming.h" />
+    <ClInclude Include="src\glx\utils.h" />
+    <ClInclude Include="src\gl\arbconverter.h" />
+    <ClInclude Include="src\gl\arbgenerator.h" />
+    <ClInclude Include="src\gl\arbhelper.h" />
+    <ClInclude Include="src\gl\arbparser.h" />
+    <ClInclude Include="src\gl\array.h" />
+    <ClInclude Include="src\gl\attributes.h" />
+    <ClInclude Include="src\gl\blend.h" />
+    <ClInclude Include="src\gl\blit.h" />
+    <ClInclude Include="src\gl\buffers.h" />
+    <ClInclude Include="src\gl\build_info.h" />
+    <ClInclude Include="src\gl\const.h" />
+    <ClInclude Include="src\gl\debug.h" />
+    <ClInclude Include="src\gl\decompress.h" />
+    <ClInclude Include="src\gl\depth.h" />
+    <ClInclude Include="src\gl\directstate.h" />
+    <ClInclude Include="src\gl\enum_info.h" />
+    <ClInclude Include="src\gl\envvars.h" />
+    <ClInclude Include="src\gl\eval.h" />
+    <ClInclude Include="src\gl\face.h" />
+    <ClInclude Include="src\gl\fog.h" />
+    <ClInclude Include="src\gl\fpe.h" />
+    <ClInclude Include="src\gl\fpe_cache.h" />
+    <ClInclude Include="src\gl\fpe_shader.h" />
+    <ClInclude Include="src\gl\framebuffers.h" />
+    <ClInclude Include="src\gl\gl4es.h" />
+    <ClInclude Include="src\gl\glcase.h" />
+    <ClInclude Include="src\gl\glstate.h" />
+    <ClInclude Include="src\gl\gl_lookup.h" />
+    <ClInclude Include="src\gl\hint.h" />
+    <ClInclude Include="src\gl\init.h" />
+    <ClInclude Include="src\gl\light.h" />
+    <ClInclude Include="src\gl\line.h" />
+    <ClInclude Include="src\gl\list.h" />
+    <ClInclude Include="src\gl\loader.h" />
+    <ClInclude Include="src\gl\logs.h" />
+    <ClInclude Include="src\gl\math\eval.h" />
+    <ClInclude Include="src\gl\matrix.h" />
+    <ClInclude Include="src\gl\matvec.h" />
+    <ClInclude Include="src\gl\oldprogram.h" />
+    <ClInclude Include="src\gl\pixel.h" />
+    <ClInclude Include="src\gl\planes.h" />
+    <ClInclude Include="src\gl\pointsprite.h" />
+    <ClInclude Include="src\gl\preproc.h" />
+    <ClInclude Include="src\gl\program.h" />
+    <ClInclude Include="src\gl\queries.h" />
+    <ClInclude Include="src\gl\raster.h" />
+    <ClInclude Include="src\gl\render.h" />
+    <ClInclude Include="src\gl\samplers.h" />
+    <ClInclude Include="src\gl\shader.h" />
+    <ClInclude Include="src\gl\shaderconv.h" />
+    <ClInclude Include="src\gl\shader_hacks.h" />
+    <ClInclude Include="src\gl\stack.h" />
+    <ClInclude Include="src\gl\state.h" />
+    <ClInclude Include="src\gl\stb_dxt_104.h" />
+    <ClInclude Include="src\gl\stencil.h" />
+    <ClInclude Include="src\gl\string_utils.h" />
+    <ClInclude Include="src\gl\texenv.h" />
+    <ClInclude Include="src\gl\texgen.h" />
+    <ClInclude Include="src\gl\texture.h" />
+    <ClInclude Include="src\gl\uniform.h" />
+    <ClInclude Include="src\gl\vertexattrib.h" />
+    <ClInclude Include="src\gl\wrap\gl4es.h" />
+    <ClInclude Include="src\gl\wrap\gles.h" />
+    <ClInclude Include="src\gl\wrap\skips.h" />
+    <ClInclude Include="src\gl\wrap\stub.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="version.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="prx.cpp" />
+    <ClCompile Include="src\glx\gbm.c" />
+    <ClCompile Include="src\glx\hardext.c" />
+    <ClCompile Include="src\gl\arbconverter.c" />
+    <ClCompile Include="src\gl\arbgenerator.c" />
+    <ClCompile Include="src\gl\arbhelper.c" />
+    <ClCompile Include="src\gl\arbparser.c" />
+    <ClCompile Include="src\gl\array.c" />
+    <ClCompile Include="src\gl\blend.c" />
+    <ClCompile Include="src\gl\blit.c" />
+    <ClCompile Include="src\gl\buffers.c" />
+    <ClCompile Include="src\gl\build_info.c" />
+    <ClCompile Include="src\gl\debug.c" />
+    <ClCompile Include="src\gl\decompress.c" />
+    <ClCompile Include="src\gl\depth.c" />
+    <ClCompile Include="src\gl\directstate.c" />
+    <ClCompile Include="src\gl\drawing.c" />
+    <ClCompile Include="src\gl\enable.c" />
+    <ClCompile Include="src\gl\envvars.c" />
+    <ClCompile Include="src\gl\eval.c" />
+    <ClCompile Include="src\gl\face.c" />
+    <ClCompile Include="src\gl\fog.c" />
+    <ClCompile Include="src\gl\fpe.c" />
+    <ClCompile Include="src\gl\fpe_cache.c" />
+    <ClCompile Include="src\gl\fpe_shader.c" />
+    <ClCompile Include="src\gl\framebuffers.c" />
+    <ClCompile Include="src\gl\getter.c" />
+    <ClCompile Include="src\gl\gl4es.c" />
+    <ClCompile Include="src\gl\glstate.c" />
+    <ClCompile Include="src\gl\gl_lookup.c" />
+    <ClCompile Include="src\gl\hint.c" />
+    <ClCompile Include="src\gl\init.c" />
+    <ClCompile Include="src\gl\light.c" />
+    <ClCompile Include="src\gl\line.c" />
+    <ClCompile Include="src\gl\list.c" />
+    <ClCompile Include="src\gl\listdraw.c" />
+    <ClCompile Include="src\gl\listrl.c" />
+    <ClCompile Include="src\gl\loader.c" />
+    <ClCompile Include="src\gl\logs.c" />
+    <ClCompile Include="src\gl\math\matheval.c" />
+    <ClCompile Include="src\gl\matrix.c" />
+    <ClCompile Include="src\gl\matvec.c" />
+    <ClCompile Include="src\gl\oldprogram.c" />
+    <ClCompile Include="src\gl\pixel.c" />
+    <ClCompile Include="src\gl\planes.c" />
+    <ClCompile Include="src\gl\pointsprite.c" />
+    <ClCompile Include="src\gl\preproc.c" />
+    <ClCompile Include="src\gl\program.c" />
+    <ClCompile Include="src\gl\queries.c" />
+    <ClCompile Include="src\gl\raster.c" />
+    <ClCompile Include="src\gl\render.c" />
+    <ClCompile Include="src\gl\samplers.c" />
+    <ClCompile Include="src\gl\shader.c" />
+    <ClCompile Include="src\gl\shaderconv.c" />
+    <ClCompile Include="src\gl\shader_hacks.c" />
+    <ClCompile Include="src\gl\stack.c" />
+    <ClCompile Include="src\gl\stencil.c" />
+    <ClCompile Include="src\gl\string_utils.c" />
+    <ClCompile Include="src\gl\stubs.c" />
+    <ClCompile Include="src\gl\texenv.c" />
+    <ClCompile Include="src\gl\texgen.c" />
+    <ClCompile Include="src\gl\texture.c" />
+    <ClCompile Include="src\gl\texture_3d.c" />
+    <ClCompile Include="src\gl\texture_compressed.c" />
+    <ClCompile Include="src\gl\texture_params.c" />
+    <ClCompile Include="src\gl\texture_read.c" />
+    <ClCompile Include="src\gl\uniform.c" />
+    <ClCompile Include="src\gl\vertexattrib.c" />
+    <ClCompile Include="src\gl\wrap\gl4eswraps.c" />
+    <ClCompile Include="src\gl\wrap\gles.c" />
+    <ClCompile Include="src\gl\wrap\glstub.c" />
+    <ClCompile Include="src\psp2\module.c" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|PSVita'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|PSVita'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="src\CMakeLists.txt" />
+  </ItemGroup>
+  <Import Condition="'$(ConfigurationType)' == 'Makefile' and Exists('$(VCTargetsPath)\Platforms\$(Platform)\SCE.Makefile.$(Platform).targets')" Project="$(VCTargetsPath)\Platforms\$(Platform)\SCE.Makefile.$(Platform).targets" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

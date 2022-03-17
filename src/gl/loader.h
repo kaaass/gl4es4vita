@@ -76,7 +76,9 @@ typedef EGLSurface (*eglCreateStreamProducerSurfaceKHR_PTR)(EGLDisplay dpy, EGLC
 #ifdef AMIGAOS4
 #include "../agl/amigaos.h"
 #elif !defined(_WIN32)
+#ifndef __psp2__
 #include <dlfcn.h>
+#endif
 #else
 #ifndef _WINBASE_
 typedef struct HISTANCE__* HISTANCE;

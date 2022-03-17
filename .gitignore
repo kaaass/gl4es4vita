@@ -9,3 +9,9 @@ cmake_install.cmake
 spec/yml/gles-1.1-full.yml
 /build/
 /tests/*.png
+*o
+*a
+*ipch
+.vs/
+PSVita_Debug
+PSVita_Release

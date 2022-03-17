@@ -1,6 +1,7 @@
 #include "attributes.h"
 #include "wrap/gl4es.h"
 #include "wrap/stub.h"
+#include "buffers.h"
 #include "directstate.h"
 #include "framebuffers.h"
 #include "init.h"

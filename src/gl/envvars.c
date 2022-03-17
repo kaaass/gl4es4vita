@@ -5,7 +5,11 @@
 //----------------------------------------------------------------------------
 const char* GetEnvVar(const char *name)
 {
+#ifndef __psp2__
 	return getenv(name);
+#else
+	return NULL;
+#endif
 }
 //----------------------------------------------------------------------------
 int HasEnvVar(const char *name)

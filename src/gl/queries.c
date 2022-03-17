@@ -1,6 +1,17 @@
 #ifndef _WIN32
 #ifdef USE_CLOCK
 #include <time.h>
+#ifdef __psp2__
+#define CLOCK_MONOTONIC_RAW 0
+#include <kernel/processmgr.h>
+#include <rtc.h>
+
+struct timespec {
+	time_t tv_sec;
+	long tv_nsec;
+};
+
+#endif
 #else
 #include <sys/time.h>
 #endif
@@ -69,6 +80,20 @@ void del_querie(GLuint querie) {
     if(s)
         free(s);
 }
+
+#ifdef __psp2__
+int clock_gettime(int clk_id, struct timespec *tp) {
+	if (clk_id == CLOCK_MONOTONIC_RAW)
+	{
+		SceKernelSysClock ticks;
+		sceKernelGetProcessTime(&ticks);
+		tp->tv_sec = ticks.quad / (1000 * 1000);
+		tp->tv_nsec = (ticks.quad * 1000) % (1000 * 1000 * 1000);
+		return 0;
+	}
+	return -1;
+}
+#endif
 
 unsigned long long get_clock() {
 	unsigned long long now;

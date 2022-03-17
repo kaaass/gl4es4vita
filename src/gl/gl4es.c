@@ -1,7 +1,10 @@
 #include "gl4es.h"
 
-#if defined(AMIGAOS4) || (defined(NOX11) && defined(NOEGL) && !defined(_WIN32))
+#if defined(AMIGAOS4) || (defined(NOX11) && defined(NOEGL) && !defined(_WIN32) && !defined(__psp2__))
 #include <sys/time.h>
+#elif defined(__psp2__)
+#include <kernel/processmgr.h>
+#include <rtc.h>
 #endif // defined(AMIGAOS4) || (defined(NOX11) && defined(NOEGL)
 
 #include "../config.h"
@@ -888,7 +891,7 @@ void APIENTRY_GL4ES glPushCall(void *call) {
 
 void APIENTRY_GL4ES gl4es_glCallLists(GLsizei n, GLenum type, const GLvoid *lists) {
     #define call(name, type) \
-        case name: glCallList(((type *)lists)[i] + glstate->list.base); break
+        case name: gl4es_glCallList(((type *)lists)[i] + glstate->list.base); break
 
     // seriously wtf
     #define call_bytes(name, stride)                             \
@@ -1231,7 +1234,11 @@ void show_fps() {
         // framerate counter
         static float avg, fps = 0;
         static int frame1, last_frame, frame, now, current_frames;
-#ifndef _WIN32
+#if defined(__psp2__)
+		SceDateTime time;
+		sceRtcGetCurrentClockLocalTime(&time);
+		now = time.microsecond * 1000 * 1000;
+#elif defined(_WIN32)
         struct timeval out;
         gettimeofday(&out, NULL);
         now = out.tv_sec;

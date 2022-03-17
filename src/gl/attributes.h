@@ -53,7 +53,7 @@
 #endif
 
 #ifndef AliasDecl
- #ifdef __GNUC__
+ #if defined(__GNUC__) || defined(__psp2__)
   #define AliasDecl(RET,NAME,DEF,OLD) \
    RET APIENTRY_GL4ES NAME DEF __attribute__((alias(_STM(OLD,DEF))))
  #elif defined(_MSC_VER)
@@ -68,7 +68,7 @@
 
 #ifndef AliasExport
  #if !defined(__EMSCRIPTEN__) && !defined(__APPLE__)
-  #ifdef __GNUC__
+  #if defined(__GNUC__) || defined(__psp2__)
    #define _AliasExport_(RET,ENM,DEF,INM,SUF) EXPORT \
       RET APIENTRY_GL4ES ENM DEF __attribute__((alias(_MNG(gl4es_##INM,SUF))))
    #define NonAliasExportDecl(RET,NAME,DEF) EXPORT \

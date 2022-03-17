@@ -1,7 +1,7 @@
 #include <stdio.h>
-#ifndef _WIN32
+#if !defined(_WIN32) && !defined(__psp2__)
 #include <unistd.h>
-#else
+#elif !defined(__psp2__)
 #include <stdio.h>
 #include <direct.h>
 #define getcwd(a,b) _getcwd(a,b)
@@ -219,7 +219,7 @@ void initialize_gl4es() {
     load_libs();
 #endif
 
-#if (defined(NOEGL) && !defined(ANDROID) && !defined(__APPLE__)) || defined(__EMSCRIPTEN__)
+#if (defined(NOEGL) && !defined(ANDROID) && !defined(__APPLE__)) || defined(__EMSCRIPTEN__) 
     int gl4es_notest = !gles_getProcAddress;
 #else
     int gl4es_notest = IsEnvVarTrue("LIBGL_NOTEST");
@@ -661,8 +661,12 @@ void initialize_gl4es() {
     env(LIBGL_GLXNATIVE, globals4es.glxnative, "Don't filter GLXConfig with GLX_X_NATIVE_TYPE");
 #endif
     char cwd[1024];
+#ifndef __psp2__
     if (getcwd(cwd, sizeof(cwd))!= NULL)
         SHUT_LOGD("Current folder is:%s\n", cwd);
+#else
+	strncpy(cwd, "app0:", 6);
+#endif
 
     if(hardext.prgbin_n>0 && !globals4es.notexarray) {
         env(LIBGL_NOPSA, globals4es.nopsa, "Don't use PrecompiledShaderArchive");

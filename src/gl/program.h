@@ -333,9 +333,9 @@ void GoUniformMatrix4fv(program_t *glprogram, GLint location, GLsizei count, GLb
 int GetUniformi(program_t *glprogram, GLint location);
 const char* GetUniformName(program_t *glprogram, GLint location);
 
-GLvoid APIENTRY_GL4ES glBindAttribLocationARB(GLhandleARB programObj, GLuint index, const GLcharARB *name);
-GLvoid APIENTRY_GL4ES glGetActiveAttribARB(GLhandleARB programObj, GLuint index, GLsizei maxLength, GLsizei *length, GLint *size, GLenum *type, GLcharARB *name);
-GLint APIENTRY_GL4ES glGetAttribLocationARB(GLhandleARB programObj, const GLcharARB *name);
+EXPORT GLvoid APIENTRY_GL4ES glBindAttribLocationARB(GLhandleARB programObj, GLuint index, const GLcharARB *name);
+EXPORT GLvoid APIENTRY_GL4ES glGetActiveAttribARB(GLhandleARB programObj, GLuint index, GLsizei maxLength, GLsizei *length, GLint *size, GLenum *type, GLcharARB *name);
+EXPORT GLint APIENTRY_GL4ES glGetAttribLocationARB(GLhandleARB programObj, const GLcharARB *name);
 
 // ============== GL_ARB_shader_objects ==================
 GLvoid APIENTRY_GL4ES gl4es_glDeleteObject(GLhandleARB obj);
@@ -349,25 +349,25 @@ GLvoid APIENTRY_GL4ES gl4es_glGetObjectParameteriv(GLhandleARB obj, GLenum pname
 GLvoid APIENTRY_GL4ES gl4es_glGetInfoLog(GLhandleARB obj, GLsizei maxLength, GLsizei *length, GLcharARB *infoLog);
 GLvoid APIENTRY_GL4ES gl4es_glGetAttachedObjects(GLhandleARB containerObj, GLsizei maxCount, GLsizei *count, GLhandleARB *obj);
 
-GLvoid APIENTRY_GL4ES glDeleteObjectARB(GLhandleARB obj);
-GLhandleARB APIENTRY_GL4ES glGetHandleARB(GLenum pname);
-GLvoid APIENTRY_GL4ES glDetachObjectARB(GLhandleARB containerObj, GLhandleARB attachedObj);
-GLhandleARB APIENTRY_GL4ES glCreateShaderObjectARB(GLenum shaderType);
-GLvoid APIENTRY_GL4ES glShaderSourceARB(GLhandleARB shaderObj, GLsizei count, const GLcharARB **string, const GLint *length);
-GLvoid APIENTRY_GL4ES glCompileShaderARB(GLhandleARB shaderObj);
-GLhandleARB APIENTRY_GL4ES glCreateProgramObjectARB(GLvoid);
-GLvoid APIENTRY_GL4ES glAttachObjectARB(GLhandleARB containerObj, GLhandleARB obj);
-GLvoid APIENTRY_GL4ES glLinkProgramARB(GLhandleARB programObj);
-GLvoid APIENTRY_GL4ES glUseProgramObjectARB(GLhandleARB programObj);
-GLvoid APIENTRY_GL4ES glValidateProgramARB(GLhandleARB programObj);
-GLvoid APIENTRY_GL4ES glGetObjectParameterfvARB(GLhandleARB obj, GLenum pname, GLfloat *params);
-GLvoid APIENTRY_GL4ES glGetObjectParameterivARB(GLhandleARB obj, GLenum pname, GLint *params);
-GLvoid APIENTRY_GL4ES glGetInfoLogARB(GLhandleARB obj, GLsizei maxLength, GLsizei *length, GLcharARB *infoLog);
-GLvoid APIENTRY_GL4ES glGetAttachedObjectsARB(GLhandleARB containerObj, GLsizei maxCount, GLsizei *count, GLhandleARB *obj);
-GLint APIENTRY_GL4ES glGetUniformLocationARB(GLhandleARB programObj, const GLcharARB *name);
-GLvoid APIENTRY_GL4ES glGetActiveUniformARB(GLhandleARB programObj, GLuint index, GLsizei maxLength, GLsizei *length, GLint *size, GLenum *type, GLcharARB *name);
-GLvoid APIENTRY_GL4ES glGetUniformfvARB(GLhandleARB programObj, GLint location, GLfloat *params);
-GLvoid APIENTRY_GL4ES glGetUniformivARB(GLhandleARB programObj, GLint location, GLint *params);
-GLvoid APIENTRY_GL4ES glGetShaderSourceARB(GLhandleARB obj, GLsizei maxLength, GLsizei *length, GLcharARB *source);
+EXPORT GLvoid APIENTRY_GL4ES glDeleteObjectARB(GLhandleARB obj);
+EXPORT GLhandleARB APIENTRY_GL4ES glGetHandleARB(GLenum pname);
+EXPORT GLvoid APIENTRY_GL4ES glDetachObjectARB(GLhandleARB containerObj, GLhandleARB attachedObj);
+EXPORT GLhandleARB APIENTRY_GL4ES glCreateShaderObjectARB(GLenum shaderType);
+EXPORT GLvoid APIENTRY_GL4ES glShaderSourceARB(GLhandleARB shaderObj, GLsizei count, const GLcharARB **string, const GLint *length);
+EXPORT GLvoid APIENTRY_GL4ES glCompileShaderARB(GLhandleARB shaderObj);
+EXPORT GLhandleARB APIENTRY_GL4ES glCreateProgramObjectARB(GLvoid);
+EXPORT GLvoid APIENTRY_GL4ES glAttachObjectARB(GLhandleARB containerObj, GLhandleARB obj);
+EXPORT GLvoid APIENTRY_GL4ES glLinkProgramARB(GLhandleARB programObj);
+EXPORT GLvoid APIENTRY_GL4ES glUseProgramObjectARB(GLhandleARB programObj);
+EXPORT GLvoid APIENTRY_GL4ES glValidateProgramARB(GLhandleARB programObj);
+EXPORT GLvoid APIENTRY_GL4ES glGetObjectParameterfvARB(GLhandleARB obj, GLenum pname, GLfloat *params);
+EXPORT GLvoid APIENTRY_GL4ES glGetObjectParameterivARB(GLhandleARB obj, GLenum pname, GLint *params);
+EXPORT GLvoid APIENTRY_GL4ES glGetInfoLogARB(GLhandleARB obj, GLsizei maxLength, GLsizei *length, GLcharARB *infoLog);
+EXPORT GLvoid APIENTRY_GL4ES glGetAttachedObjectsARB(GLhandleARB containerObj, GLsizei maxCount, GLsizei *count, GLhandleARB *obj);
+EXPORT GLint APIENTRY_GL4ES glGetUniformLocationARB(GLhandleARB programObj, const GLcharARB *name);
+EXPORT GLvoid APIENTRY_GL4ES glGetActiveUniformARB(GLhandleARB programObj, GLuint index, GLsizei maxLength, GLsizei *length, GLint *size, GLenum *type, GLcharARB *name);
+EXPORT GLvoid APIENTRY_GL4ES glGetUniformfvARB(GLhandleARB programObj, GLint location, GLfloat *params);
+EXPORT GLvoid APIENTRY_GL4ES glGetUniformivARB(GLhandleARB programObj, GLint location, GLint *params);
+EXPORT GLvoid APIENTRY_GL4ES glGetShaderSourceARB(GLhandleARB obj, GLsizei maxLength, GLsizei *length, GLcharARB *source);
 
 #endif // _GL4ES_PROGRAM_H_

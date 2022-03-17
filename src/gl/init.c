@@ -103,7 +103,7 @@ void initialize_gl4es() {
     	globals4es.nobanner = IsEnvVarTrue("LIBGL_NOBANNER");
 		#endif
 
-		SHUT_LOGD("Initialising gl4es\n");
+		SHUT_LOGD("Initialising gl4es4vita\n");
 
     if(!globals4es.nobanner) print_build_infos();
 

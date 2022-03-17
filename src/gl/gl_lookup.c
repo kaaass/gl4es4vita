@@ -565,8 +565,8 @@ void* APIENTRY_GL4ES gl4es_GetProcAddress(const char *name) {
     _EX(glCopyMultiTexSubImage3D);
     _EX(glEnableClientStateIndexed);
     _EX(glDisableClientStateIndexed);
-    _EX(glEnableClientStatei);
-    _EX(glDisableClientStatei);
+    //_EX(glEnableClientStatei);
+    //_EX(glDisableClientStatei);
     _EX(glEnableVertexArray);
     _EX(glDisableVertexArray);
     _EX(glEnableVertexArrayAttrib);
@@ -673,8 +673,8 @@ void* APIENTRY_GL4ES gl4es_GetProcAddress(const char *name) {
     _EXT(glCopyMultiTexSubImage3D);
     _EXT(glEnableClientStateIndexed);
     _EXT(glDisableClientStateIndexed);
-    _EXT(glEnableClientStatei);
-    _EXT(glDisableClientStatei);
+    //_EXT(glEnableClientStatei);
+    //_EXT(glDisableClientStatei);
     _EXT(glEnableVertexArray);
     _EXT(glDisableVertexArray);
     _EXT(glEnableVertexArrayAttrib);

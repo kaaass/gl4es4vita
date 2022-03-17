@@ -14,9 +14,6 @@
     <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\config.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\gl\vertexattrib.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -170,9 +167,6 @@
     <ClInclude Include="src\gl\build_info.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\gl\buffers.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\gl\blit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -227,13 +221,10 @@
     <ClInclude Include="src\glx\hardext.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\glx\glx_gbm.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\glx\gbmfunc.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\glx\drmfunc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gl\buffers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -317,9 +308,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\gl\getter.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gl\gl_lookup.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\gl\gl4es.c">
@@ -454,7 +442,7 @@
     <ClCompile Include="src\psp2\module.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\glx\gbm.c">
+    <ClCompile Include="src\gl\gl_lookup.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

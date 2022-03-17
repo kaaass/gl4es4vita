@@ -6,7 +6,7 @@
    #define EXPORT
  #elif defined(STATICLIB)
    #define EXPORT
- #elif defined(_WIN32) || defined(__CYGWIN__)
+ #elif defined(_WIN32) || defined(__CYGWIN__) || defined(__psp2__)
    #define EXPORT __declspec(dllexport)
  #elif defined(__GNUC__)
    #define EXPORT __attribute__((visibility("default")))
@@ -22,11 +22,11 @@
  #if defined(_WIN32) && !defined(_WIN64)
   #ifdef _MSC_VER
    #define _MNG(NAME,SUF) "_" _STR(NAME) "@" SUF
-  #elif defined(__GNUC__)
+  #elif defined(__GNUC__) || defined(__psp2__)
    #define _MNG(NAME,SUF) _STR(NAME) "@" SUF
   #endif
  #endif
- #ifdef _MNG
+ #ifdef _MNG 
   #define _STM(NAME,DEF) _MNG(NAME,_VCR(_SUF1 DEF))
   #define _SUFF(...) _VCR(_SUF1 __VA_ARGS__)
   #define _SU2F(...) _VCR(_SUF2 __VA_ARGS__)
@@ -70,7 +70,7 @@
  #if !defined(__EMSCRIPTEN__) && !defined(__APPLE__)
   #if defined(__GNUC__) || defined(__psp2__)
    #define _AliasExport_(RET,ENM,DEF,INM,SUF) EXPORT \
-      RET APIENTRY_GL4ES ENM DEF __attribute__((alias(_MNG(gl4es_##INM,SUF))))
+      RET APIENTRY_GL4ES ENM DEF __attribute__((alias(_STR(gl4es_##INM))))
    #define NonAliasExportDecl(RET,NAME,DEF) EXPORT \
       RET APIENTRY_GL4ES NAME DEF
   #elif defined(_MSC_VER)

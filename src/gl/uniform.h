@@ -35,25 +35,25 @@ void APIENTRY_GL4ES gl4es_glUniformMatrix3fv(GLint location, GLsizei count, GLbo
 void APIENTRY_GL4ES gl4es_glUniformMatrix4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
 
 // ========== GL_ARB_shader_objects ==============
-GLvoid APIENTRY_GL4ES glUniform1fARB(GLint location, GLfloat v0);
-GLvoid APIENTRY_GL4ES glUniform2fARB(GLint location, GLfloat v0, GLfloat v1);
-GLvoid APIENTRY_GL4ES glUniform3fARB(GLint location, GLfloat v0, GLfloat v1, GLfloat v2);
-GLvoid APIENTRY_GL4ES glUniform4fARB(GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
-GLvoid APIENTRY_GL4ES glUniform1iARB(GLint location, GLint v0);
-GLvoid APIENTRY_GL4ES glUniform2iARB(GLint location, GLint v0, GLint v1);
-GLvoid APIENTRY_GL4ES glUniform3iARB(GLint location, GLint v0, GLint v1, GLint v2);
-GLvoid APIENTRY_GL4ES glUniform4iARB(GLint location, GLint v0, GLint v1, GLint v2, GLint v3);
-GLvoid APIENTRY_GL4ES glUniform1fvARB(GLint location, GLsizei count, const GLfloat *value);
-GLvoid APIENTRY_GL4ES glUniform2fvARB(GLint location, GLsizei count, const GLfloat *value);
-GLvoid APIENTRY_GL4ES glUniform3fvARB(GLint location, GLsizei count, const GLfloat *value);
-GLvoid APIENTRY_GL4ES glUniform4fvARB(GLint location, GLsizei count, const GLfloat *value);
-GLvoid APIENTRY_GL4ES glUniform1ivARB(GLint location, GLsizei count, const GLint *value);
-GLvoid APIENTRY_GL4ES glUniform2ivARB(GLint location, GLsizei count, const GLint *value);
-GLvoid APIENTRY_GL4ES glUniform3ivARB(GLint location, GLsizei count, const GLint *value);
-GLvoid APIENTRY_GL4ES glUniform4ivARB(GLint location, GLsizei count, const GLint *value);
-GLvoid APIENTRY_GL4ES glUniformMatrix2fvARB(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-GLvoid APIENTRY_GL4ES glUniformMatrix3fvARB(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-GLvoid APIENTRY_GL4ES glUniformMatrix4fvARB(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+EXPORT GLvoid APIENTRY_GL4ES glUniform1fARB(GLint location, GLfloat v0);
+EXPORT GLvoid APIENTRY_GL4ES glUniform2fARB(GLint location, GLfloat v0, GLfloat v1);
+EXPORT GLvoid APIENTRY_GL4ES glUniform3fARB(GLint location, GLfloat v0, GLfloat v1, GLfloat v2);
+EXPORT GLvoid APIENTRY_GL4ES glUniform4fARB(GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
+EXPORT GLvoid APIENTRY_GL4ES glUniform1iARB(GLint location, GLint v0);
+EXPORT GLvoid APIENTRY_GL4ES glUniform2iARB(GLint location, GLint v0, GLint v1);
+EXPORT GLvoid APIENTRY_GL4ES glUniform3iARB(GLint location, GLint v0, GLint v1, GLint v2);
+EXPORT GLvoid APIENTRY_GL4ES glUniform4iARB(GLint location, GLint v0, GLint v1, GLint v2, GLint v3);
+EXPORT GLvoid APIENTRY_GL4ES glUniform1fvARB(GLint location, GLsizei count, const GLfloat *value);
+EXPORT GLvoid APIENTRY_GL4ES glUniform2fvARB(GLint location, GLsizei count, const GLfloat *value);
+EXPORT GLvoid APIENTRY_GL4ES glUniform3fvARB(GLint location, GLsizei count, const GLfloat *value);
+EXPORT GLvoid APIENTRY_GL4ES glUniform4fvARB(GLint location, GLsizei count, const GLfloat *value);
+EXPORT GLvoid APIENTRY_GL4ES glUniform1ivARB(GLint location, GLsizei count, const GLint *value);
+EXPORT GLvoid APIENTRY_GL4ES glUniform2ivARB(GLint location, GLsizei count, const GLint *value);
+EXPORT GLvoid APIENTRY_GL4ES glUniform3ivARB(GLint location, GLsizei count, const GLint *value);
+EXPORT GLvoid APIENTRY_GL4ES glUniform4ivARB(GLint location, GLsizei count, const GLint *value);
+EXPORT GLvoid APIENTRY_GL4ES glUniformMatrix2fvARB(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+EXPORT GLvoid APIENTRY_GL4ES glUniformMatrix3fvARB(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+EXPORT GLvoid APIENTRY_GL4ES glUniformMatrix4fvARB(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
 // ===========
 void APIENTRY_GL4ES gl4es_glProgramUniform1f(GLuint program, GLint location, GLfloat v0);
 void APIENTRY_GL4ES gl4es_glProgramUniform2f(GLuint program, GLint location, GLfloat v0, GLfloat v1);

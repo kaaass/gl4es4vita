@@ -53,7 +53,7 @@
 #endif
 
 #ifndef AliasDecl
- #if defined(__GNUC__) || defined(__psp2__)
+ #if defined(__GNUC__)
   #define AliasDecl(RET,NAME,DEF,OLD) \
    RET APIENTRY_GL4ES NAME DEF __attribute__((alias(_STM(OLD,DEF))))
  #elif defined(_MSC_VER)
@@ -68,7 +68,7 @@
 
 #ifndef AliasExport
  #if !defined(__EMSCRIPTEN__) && !defined(__APPLE__)
-  #if defined(__GNUC__) || defined(__psp2__)
+  #if defined(__GNUC__)
    #define _AliasExport_(RET,ENM,DEF,INM,SUF) EXPORT \
       RET APIENTRY_GL4ES ENM DEF __attribute__((alias(_STR(gl4es_##INM))))
    #define NonAliasExportDecl(RET,NAME,DEF) EXPORT \
@@ -113,13 +113,13 @@
       _AliasExport_(RET,NAME,(void),NAME,"0")
  #endif
  #ifndef _AliasExport_
-  #define AliasExport(RET,NAME,X,DEF)       RET NAME##X DEF
+  #define AliasExport(RET,NAME,X,DEF)       EXPORT RET NAME##X DEF
   #define AliasExport_A(RET,NAME,X,DEF,INM) AliasExport(RET,NAME,X,DEF)
   #define AliasExport_D(RET,NAME,X,DEF)     AliasExport(RET,NAME,X,DEF)
   #define AliasExport_D_1(RET,NAME,X,DEF)   AliasExport(RET,NAME,X,DEF)
   #define AliasExport_M(RET,NAME,X,DEF,SUF) AliasExport(RET,NAME,X,DEF)
   #define AliasExport_V(RET,NAME)           AliasExport(RET,NAME,,(void))
-  #define NonAliasExportDecl(RET,NAME,DEF)  RET NAME DEF
+  #define NonAliasExportDecl(RET,NAME,DEF)  EXPORT RET NAME DEF
  #endif
  #define AliasExport_1(RET,NAME,X,DEF) AliasExport(RET,NAME,X,DEF)
 #endif // AliasExport

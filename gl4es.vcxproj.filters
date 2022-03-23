@@ -229,12 +229,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="prx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\glx\hardext.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -443,6 +437,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\gl\gl_lookup.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="prx.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

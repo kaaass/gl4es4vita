@@ -32,10 +32,10 @@ void gl4es_Stub(void *x, ...) {
 }
 #else
 //TODO: if need use STUB with different argnum, the macro must be redesigned
-void APIENTRY_GL4ES gl4es_Stub(void *x) {}
+EXPORT void APIENTRY_GL4ES gl4es_Stub(void *x) {}
 #endif
 
-void* APIENTRY_GL4ES gl4es_GetProcAddress(const char *name) {
+EXPORT void* APIENTRY_GL4ES gl4es_GetProcAddress(const char *name) {
     DBG(printf("glGetProcAddress(\"%s\")", name);)
     // generated gles wrappers
     #include "glesfuncs.inc"

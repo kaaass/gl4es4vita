@@ -278,22 +278,22 @@ KHASH_MAP_DECLARE_INT(programlist, program_t *);
 
 void deleteProgram(program_t *glprogram, khint_t k_program);
 
-void APIENTRY_GL4ES gl4es_glAttachShader(GLuint program, GLuint shader);
-void APIENTRY_GL4ES gl4es_glBindAttribLocation(GLuint program, GLuint index, const GLchar *name);
-GLuint APIENTRY_GL4ES gl4es_glCreateProgram(void);
-void APIENTRY_GL4ES gl4es_glDeleteProgram(GLuint program);
-void APIENTRY_GL4ES gl4es_glDetachShader(GLuint program, GLuint shader);
-void APIENTRY_GL4ES gl4es_glGetActiveAttrib(GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLint *size, GLenum *type, GLchar *name);
-void APIENTRY_GL4ES gl4es_glGetActiveUniform(GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLint *size, GLenum *type, GLchar *name);
-void APIENTRY_GL4ES gl4es_glGetAttachedShaders(GLuint program, GLsizei maxCount, GLsizei *count, GLuint *shaders);
-GLint APIENTRY_GL4ES gl4es_glGetAttribLocation(GLuint program, const GLchar *name);
-void APIENTRY_GL4ES gl4es_glGetProgramInfoLog(GLuint program, GLsizei maxLength, GLsizei *length, GLchar *infoLog);
-void APIENTRY_GL4ES gl4es_glGetProgramiv(GLuint program, GLenum pname, GLint *params);
-GLint APIENTRY_GL4ES gl4es_glGetUniformLocation(GLuint program, const GLchar *name);
-GLboolean APIENTRY_GL4ES gl4es_glIsProgram(GLuint program);
-void APIENTRY_GL4ES gl4es_glLinkProgram(GLuint program);
-void APIENTRY_GL4ES gl4es_glUseProgram(GLuint program);
-void APIENTRY_GL4ES gl4es_glValidateProgram(GLuint program);
+EXPORT void APIENTRY_GL4ES gl4es_glAttachShader(GLuint program, GLuint shader);
+EXPORT void APIENTRY_GL4ES gl4es_glBindAttribLocation(GLuint program, GLuint index, const GLchar *name);
+EXPORT GLuint APIENTRY_GL4ES gl4es_glCreateProgram(void);
+EXPORT void APIENTRY_GL4ES gl4es_glDeleteProgram(GLuint program);
+EXPORT void APIENTRY_GL4ES gl4es_glDetachShader(GLuint program, GLuint shader);
+EXPORT void APIENTRY_GL4ES gl4es_glGetActiveAttrib(GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLint *size, GLenum *type, GLchar *name);
+EXPORT void APIENTRY_GL4ES gl4es_glGetActiveUniform(GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLint *size, GLenum *type, GLchar *name);
+EXPORT void APIENTRY_GL4ES gl4es_glGetAttachedShaders(GLuint program, GLsizei maxCount, GLsizei *count, GLuint *shaders);
+EXPORT GLint APIENTRY_GL4ES gl4es_glGetAttribLocation(GLuint program, const GLchar *name);
+EXPORT void APIENTRY_GL4ES gl4es_glGetProgramInfoLog(GLuint program, GLsizei maxLength, GLsizei *length, GLchar *infoLog);
+EXPORT void APIENTRY_GL4ES gl4es_glGetProgramiv(GLuint program, GLenum pname, GLint *params);
+EXPORT GLint APIENTRY_GL4ES gl4es_glGetUniformLocation(GLuint program, const GLchar *name);
+EXPORT GLboolean APIENTRY_GL4ES gl4es_glIsProgram(GLuint program);
+EXPORT void APIENTRY_GL4ES gl4es_glLinkProgram(GLuint program);
+EXPORT void APIENTRY_GL4ES gl4es_glUseProgram(GLuint program);
+EXPORT void APIENTRY_GL4ES gl4es_glValidateProgram(GLuint program);
 
 int gl4es_useProgramBinary(GLuint program, int length, GLenum format, const void* binary);    // internal
 int gl4es_getProgramBinary(GLuint program, int *length, GLenum *format, void** binary);    // internal
@@ -338,16 +338,16 @@ EXPORT GLvoid APIENTRY_GL4ES glGetActiveAttribARB(GLhandleARB programObj, GLuint
 EXPORT GLint APIENTRY_GL4ES glGetAttribLocationARB(GLhandleARB programObj, const GLcharARB *name);
 
 // ============== GL_ARB_shader_objects ==================
-GLvoid APIENTRY_GL4ES gl4es_glDeleteObject(GLhandleARB obj);
-GLhandleARB APIENTRY_GL4ES gl4es_glGetHandle(GLenum pname);
-GLvoid APIENTRY_GL4ES gl4es_glDetachObject(GLhandleARB containerObj, GLhandleARB attachedObj);
-GLhandleARB APIENTRY_GL4ES gl4es_glCreateProgramObject(GLvoid);
-GLvoid APIENTRY_GL4ES gl4es_glAttachObject(GLhandleARB containerObj, GLhandleARB obj);
-GLvoid APIENTRY_GL4ES gl4es_glUseProgramObject(GLhandleARB programObj);
-GLvoid APIENTRY_GL4ES gl4es_glGetObjectParameterfv(GLhandleARB obj, GLenum pname, GLfloat *params);
-GLvoid APIENTRY_GL4ES gl4es_glGetObjectParameteriv(GLhandleARB obj, GLenum pname, GLint *params);
-GLvoid APIENTRY_GL4ES gl4es_glGetInfoLog(GLhandleARB obj, GLsizei maxLength, GLsizei *length, GLcharARB *infoLog);
-GLvoid APIENTRY_GL4ES gl4es_glGetAttachedObjects(GLhandleARB containerObj, GLsizei maxCount, GLsizei *count, GLhandleARB *obj);
+EXPORT GLvoid APIENTRY_GL4ES gl4es_glDeleteObject(GLhandleARB obj);
+EXPORT GLhandleARB APIENTRY_GL4ES gl4es_glGetHandle(GLenum pname);
+EXPORT GLvoid APIENTRY_GL4ES gl4es_glDetachObject(GLhandleARB containerObj, GLhandleARB attachedObj);
+EXPORT GLhandleARB APIENTRY_GL4ES gl4es_glCreateProgramObject(GLvoid);
+EXPORT GLvoid APIENTRY_GL4ES gl4es_glAttachObject(GLhandleARB containerObj, GLhandleARB obj);
+EXPORT GLvoid APIENTRY_GL4ES gl4es_glUseProgramObject(GLhandleARB programObj);
+EXPORT GLvoid APIENTRY_GL4ES gl4es_glGetObjectParameterfv(GLhandleARB obj, GLenum pname, GLfloat *params);
+EXPORT GLvoid APIENTRY_GL4ES gl4es_glGetObjectParameteriv(GLhandleARB obj, GLenum pname, GLint *params);
+EXPORT GLvoid APIENTRY_GL4ES gl4es_glGetInfoLog(GLhandleARB obj, GLsizei maxLength, GLsizei *length, GLcharARB *infoLog);
+EXPORT GLvoid APIENTRY_GL4ES gl4es_glGetAttachedObjects(GLhandleARB containerObj, GLsizei maxCount, GLsizei *count, GLhandleARB *obj);
 
 EXPORT GLvoid APIENTRY_GL4ES glDeleteObjectARB(GLhandleARB obj);
 EXPORT GLhandleARB APIENTRY_GL4ES glGetHandleARB(GLenum pname);

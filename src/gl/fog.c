@@ -8,7 +8,7 @@
 #include "matrix.h"
 #include "matvec.h"
 
-void APIENTRY_GL4ES gl4es_glFogfv(GLenum pname, const GLfloat* params) {
+EXPORT void APIENTRY_GL4ES gl4es_glFogfv(GLenum pname, const GLfloat* params) {
 
     if (glstate->list.active)
         if (glstate->list.compiling) {
@@ -70,20 +70,20 @@ void APIENTRY_GL4ES gl4es_glFogfv(GLenum pname, const GLfloat* params) {
     errorGL();
 }
 
-void APIENTRY_GL4ES gl4es_glFogf(GLenum pname, GLfloat param) {
+EXPORT void APIENTRY_GL4ES gl4es_glFogf(GLenum pname, GLfloat param) {
     gl4es_glFogfv(pname, &param);
 }
 
-void APIENTRY_GL4ES gl4es_glFogCoordd(GLdouble coord) {
+EXPORT void APIENTRY_GL4ES gl4es_glFogCoordd(GLdouble coord) {
     gl4es_glFogCoordf(coord);
 }
-void APIENTRY_GL4ES gl4es_glFogCoorddv(const GLdouble *coord) {
+EXPORT void APIENTRY_GL4ES gl4es_glFogCoorddv(const GLdouble *coord) {
     gl4es_glFogCoordf(*coord);
 }
-void APIENTRY_GL4ES gl4es_glFogCoordfv(const GLfloat *coord) {
+EXPORT void APIENTRY_GL4ES gl4es_glFogCoordfv(const GLfloat *coord) {
     gl4es_glFogCoordf(*coord);
 }
-void APIENTRY_GL4ES gl4es_glFogCoordf(GLfloat coord) {
+EXPORT void APIENTRY_GL4ES gl4es_glFogCoordf(GLfloat coord) {
     if (glstate->list.active) {
         if(glstate->list.pending)
             gl4es_flush();

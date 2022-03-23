@@ -49,11 +49,12 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|PSVita'">
     <ClCompile>
-      <PreprocessorDefinitions>GL_GLEXT_PROTOTYPES;NO_GBM;NOEGL;NOX11;NO_LOADER;NO_INIT_CONSTRUCTOR;USE_CLOCK;DEFAULT_ES=2;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GL_GLEXT_PROTOTYPES;NO_GBM;NOEGL;NOX11;NO_LOADER;NO_INIT_CONSTRUCTOR;USE_CLOCK;DEFAULT_ES=2;PRX_MODULE;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <ProcessorNumber>16</ProcessorNumber>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ObjectFileName>$(IntDir)%(Filename)$(ObjectExt)</ObjectFileName>
     </ClCompile>
     <Link>
       <GenerateSnMapFile>FullMapFile</GenerateSnMapFile>
@@ -146,7 +147,9 @@
     <ClInclude Include="version.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="prx.cpp" />
+    <ClCompile Include="prx.c">
+      <DeploymentContent>true</DeploymentContent>
+    </ClCompile>
     <ClCompile Include="src\glx\hardext.c" />
     <ClCompile Include="src\gl\arbconverter.c" />
     <ClCompile Include="src\gl\arbgenerator.c" />
@@ -217,10 +220,6 @@
     <ClCompile Include="src\gl\wrap\gles.c" />
     <ClCompile Include="src\gl\wrap\glstub.c" />
     <ClCompile Include="src\psp2\module.c" />
-    <ClCompile Include="stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|PSVita'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|PSVita'">Create</PrecompiledHeader>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\CMakeLists.txt" />

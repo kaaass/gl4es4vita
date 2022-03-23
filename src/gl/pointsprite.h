@@ -12,11 +12,11 @@ typedef struct {
     GLenum  coordOrigin;
 } pointsprite_t;
 
-void APIENTRY_GL4ES gl4es_glPointParameteri(GLenum pname, GLint param);
-void APIENTRY_GL4ES gl4es_glPointParameteriv(GLenum pname, const GLint * params);
-void APIENTRY_GL4ES gl4es_glPointParameterf(GLenum pname, GLfloat param);
-void APIENTRY_GL4ES gl4es_glPointParameterfv(GLenum pname, const GLfloat * params);
+EXPORT void APIENTRY_GL4ES gl4es_glPointParameteri(GLenum pname, GLint param);
+EXPORT void APIENTRY_GL4ES gl4es_glPointParameteriv(GLenum pname, const GLint * params);
+EXPORT void APIENTRY_GL4ES gl4es_glPointParameterf(GLenum pname, GLfloat param);
+EXPORT void APIENTRY_GL4ES gl4es_glPointParameterfv(GLenum pname, const GLfloat * params);
 
-void APIENTRY_GL4ES gl4es_glPointSize(GLfloat size);
+EXPORT void APIENTRY_GL4ES gl4es_glPointSize(GLfloat size);
 
 #endif // _GL4ES_POINTSPRITE_H_

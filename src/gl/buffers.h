@@ -22,23 +22,23 @@ typedef struct {
 
 KHASH_MAP_DECLARE_INT(buff, glbuffer_t *);
 
-void APIENTRY_GL4ES gl4es_glGenBuffers(GLsizei n, GLuint * buffers);
-void APIENTRY_GL4ES gl4es_glBindBuffer(GLenum target, GLuint buffer);
-void APIENTRY_GL4ES gl4es_glBufferData(GLenum target, GLsizeiptr size, const GLvoid * data, GLenum usage);
-void APIENTRY_GL4ES gl4es_glBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, const GLvoid * data);
-void APIENTRY_GL4ES gl4es_glDeleteBuffers(GLsizei n, const GLuint * buffers);
-GLboolean APIENTRY_GL4ES gl4es_glIsBuffer(GLuint buffer);
-void APIENTRY_GL4ES gl4es_glGetBufferParameteriv(GLenum target, GLenum value, GLint * data);
+EXPORT void APIENTRY_GL4ES gl4es_glGenBuffers(GLsizei n, GLuint * buffers);
+EXPORT void APIENTRY_GL4ES gl4es_glBindBuffer(GLenum target, GLuint buffer);
+EXPORT void APIENTRY_GL4ES gl4es_glBufferData(GLenum target, GLsizeiptr size, const GLvoid * data, GLenum usage);
+EXPORT void APIENTRY_GL4ES gl4es_glBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, const GLvoid * data);
+EXPORT void APIENTRY_GL4ES gl4es_glDeleteBuffers(GLsizei n, const GLuint * buffers);
+EXPORT GLboolean APIENTRY_GL4ES gl4es_glIsBuffer(GLuint buffer);
+EXPORT void APIENTRY_GL4ES gl4es_glGetBufferParameteriv(GLenum target, GLenum value, GLint * data);
 
-void* APIENTRY_GL4ES gl4es_glMapBuffer(GLenum target, GLenum access);
-GLboolean APIENTRY_GL4ES gl4es_glUnmapBuffer(GLenum target);
-void APIENTRY_GL4ES gl4es_glGetBufferPointerv(GLenum target, GLenum pname, GLvoid ** params);
-void APIENTRY_GL4ES gl4es_glGetBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, GLvoid * data);
+EXPORT void* APIENTRY_GL4ES gl4es_glMapBuffer(GLenum target, GLenum access);
+EXPORT GLboolean APIENTRY_GL4ES gl4es_glUnmapBuffer(GLenum target);
+EXPORT void APIENTRY_GL4ES gl4es_glGetBufferPointerv(GLenum target, GLenum pname, GLvoid ** params);
+EXPORT void APIENTRY_GL4ES gl4es_glGetBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, GLvoid * data);
 
-void* APIENTRY_GLES gl4es_glMapBufferRange(GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access);
-void APIENTRY_GL4ES gl4es_glFlushMappedBufferRange(GLenum target, GLintptr offset, GLsizeiptr length);
+EXPORT void* APIENTRY_GLES gl4es_glMapBufferRange(GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access);
+EXPORT void APIENTRY_GL4ES gl4es_glFlushMappedBufferRange(GLenum target, GLintptr offset, GLsizeiptr length);
 
-void APIENTRY_GL4ES gl4es_glCopyBufferSubData(GLenum readTarget, GLenum writeTarget, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size);
+EXPORT void APIENTRY_GL4ES gl4es_glCopyBufferSubData(GLenum readTarget, GLenum writeTarget, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size);
 
 EXPORT void APIENTRY_GL4ES glGenBuffers(GLsizei n, GLuint * buffers);
 EXPORT void APIENTRY_GL4ES glBindBuffer(GLenum target, GLuint buffer);
@@ -220,22 +220,22 @@ void VaoInit(glvao_t *vao);
 
 KHASH_MAP_DECLARE_INT(glvao, glvao_t*);
 
-void APIENTRY_GL4ES gl4es_glGenVertexArrays(GLsizei n, GLuint *arrays);
-void APIENTRY_GL4ES gl4es_glBindVertexArray(GLuint array);
-void APIENTRY_GL4ES gl4es_glDeleteVertexArrays(GLsizei n, const GLuint *arrays);
-GLboolean APIENTRY_GL4ES gl4es_glIsVertexArray(GLuint array);
+EXPORT void APIENTRY_GL4ES gl4es_glGenVertexArrays(GLsizei n, GLuint *arrays);
+EXPORT void APIENTRY_GL4ES gl4es_glBindVertexArray(GLuint array);
+EXPORT void APIENTRY_GL4ES gl4es_glDeleteVertexArrays(GLsizei n, const GLuint *arrays);
+EXPORT GLboolean APIENTRY_GL4ES gl4es_glIsVertexArray(GLuint array);
 
 EXPORT void APIENTRY_GL4ES glGenVertexArrays(GLsizei n, GLuint *arrays);
 EXPORT void APIENTRY_GL4ES glBindVertexArray(GLuint array);
 EXPORT void APIENTRY_GL4ES glDeleteVertexArrays(GLsizei n, const GLuint *arrays);
 EXPORT GLboolean APIENTRY_GL4ES glIsVertexArray(GLuint array);
 
-void APIENTRY_GL4ES gl4es_glNamedBufferData(GLuint buffer, GLsizeiptr size, const GLvoid * data, GLenum usage);
-void APIENTRY_GL4ES gl4es_glNamedBufferSubData(GLuint buffer, GLintptr offset, GLsizeiptr size, const GLvoid * data);
-void APIENTRY_GL4ES gl4es_glGetNamedBufferParameteriv(GLuint buffer, GLenum value, GLint * data);
-void* APIENTRY_GL4ES gl4es_glMapNamedBuffer(GLuint buffer, GLenum access);
-GLboolean APIENTRY_GL4ES gl4es_glUnmapNamedBuffer(GLuint buffer);
-void APIENTRY_GL4ES gl4es_glGetNamedBufferSubData(GLuint buffer, GLintptr offset, GLsizeiptr size, GLvoid * data);
-void APIENTRY_GL4ES gl4es_glGetNamedBufferPointerv(GLuint buffer, GLenum pname, GLvoid ** params);
+EXPORT void APIENTRY_GL4ES gl4es_glNamedBufferData(GLuint buffer, GLsizeiptr size, const GLvoid * data, GLenum usage);
+EXPORT void APIENTRY_GL4ES gl4es_glNamedBufferSubData(GLuint buffer, GLintptr offset, GLsizeiptr size, const GLvoid * data);
+EXPORT void APIENTRY_GL4ES gl4es_glGetNamedBufferParameteriv(GLuint buffer, GLenum value, GLint * data);
+EXPORT void* APIENTRY_GL4ES gl4es_glMapNamedBuffer(GLuint buffer, GLenum access);
+EXPORT GLboolean APIENTRY_GL4ES gl4es_glUnmapNamedBuffer(GLuint buffer);
+EXPORT void APIENTRY_GL4ES gl4es_glGetNamedBufferSubData(GLuint buffer, GLintptr offset, GLsizeiptr size, GLvoid * data);
+EXPORT void APIENTRY_GL4ES gl4es_glGetNamedBufferPointerv(GLuint buffer, GLenum pname, GLvoid ** params);
 
 #endif // _GL4ES_BUFFERS_H_

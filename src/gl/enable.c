@@ -267,7 +267,7 @@ static void proxy_glEnable(GLenum cap, bool enable, void (APIENTRY_GLES *next)(G
     #undef clientGO
 }
 
-void APIENTRY_GL4ES gl4es_glEnable(GLenum cap) {
+EXPORT void APIENTRY_GL4ES gl4es_glEnable(GLenum cap) {
     DBG(printf("glEnable(%s), glstate->list.pending=%d\n", PrintEnum(cap), glstate->list.pending);)
     if(!glstate->list.pending) {
 	    PUSH_IF_COMPILING(glEnable)
@@ -287,7 +287,7 @@ void APIENTRY_GL4ES gl4es_glEnable(GLenum cap) {
 }
 AliasExport(void,glEnable,,(GLenum cap));
 
-void APIENTRY_GL4ES gl4es_glDisable(GLenum cap) {
+EXPORT void APIENTRY_GL4ES gl4es_glDisable(GLenum cap) {
     DBG(printf("glDisable(%s), glstate->list.pending=%d\n", PrintEnum(cap), glstate->list.pending);)
     if(!glstate->list.pending) {
 	    PUSH_IF_COMPILING(glDisable)
@@ -308,7 +308,7 @@ void APIENTRY_GL4ES gl4es_glDisable(GLenum cap) {
 }
 AliasExport(void,glDisable,,(GLenum cap));
 
-void APIENTRY_GL4ES gl4es_glEnableClientState(GLenum cap) {
+EXPORT void APIENTRY_GL4ES gl4es_glEnableClientState(GLenum cap) {
     DBG(printf("glEnableClientState(%s), list.begin=%dn", PrintEnum(cap), glstate->list.begin);)
     ERROR_IN_BEGIN
     // should flush for now... to be optimized later!
@@ -318,7 +318,7 @@ void APIENTRY_GL4ES gl4es_glEnableClientState(GLenum cap) {
 }
 AliasExport(void,glEnableClientState,,(GLenum cap));
 
-void APIENTRY_GL4ES gl4es_glDisableClientState(GLenum cap) {
+EXPORT void APIENTRY_GL4ES gl4es_glDisableClientState(GLenum cap) {
     DBG(printf("glDisableClientState(%s), list.begin=%d\n", PrintEnum(cap), glstate->list.begin);)
     ERROR_IN_BEGIN
     // should flush for now... to be optimized later!
@@ -334,7 +334,7 @@ AliasExport(void,glDisableClientState,,(GLenum cap));
 #define clientisenabled(what, where) \
     case what: return glstate->vao->where
     
-GLboolean APIENTRY_GL4ES gl4es_glIsEnabled(GLenum cap) {
+EXPORT GLboolean APIENTRY_GL4ES gl4es_glIsEnabled(GLenum cap) {
     DBG(printf("glIsEnabed(%s), list.begin=%d, list.compiling=%d, list.pending=%d\n", PrintEnum(cap), glstate->list.begin, glstate->list.compiling, glstate->list.pending);)
     if(glstate->list.begin) {errorShim(GL_INVALID_OPERATION); return GL_FALSE;}
     if(glstate->list.compiling) {errorShim(GL_INVALID_OPERATION); return GL_FALSE;}

@@ -16,7 +16,7 @@
 #define min(a, b)	((a)<b)?(a):(b)
 #define max(a, b)	((a)>(b))?(a):(b)
 
-void APIENTRY_GL4ES gl4es_glRasterPos3f(GLfloat x, GLfloat y, GLfloat z) {
+EXPORT void APIENTRY_GL4ES gl4es_glRasterPos3f(GLfloat x, GLfloat y, GLfloat z) {
     if (glstate->list.active)
         if (glstate->list.compiling) {
 		NewStage(glstate->list.active, STAGE_RASTER);
@@ -44,7 +44,7 @@ void APIENTRY_GL4ES gl4es_glRasterPos3f(GLfloat x, GLfloat y, GLfloat z) {
 #if !defined(NO_EGL) && !defined(NOX11)
 void refreshMainFBO();
 #endif
-void APIENTRY_GL4ES gl4es_glWindowPos3f(GLfloat x, GLfloat y, GLfloat z) {
+EXPORT void APIENTRY_GL4ES gl4es_glWindowPos3f(GLfloat x, GLfloat y, GLfloat z) {
     if (glstate->list.active)
         if (glstate->list.compiling) {
 			NewStage(glstate->list.active, STAGE_RASTER);
@@ -58,7 +58,7 @@ void APIENTRY_GL4ES gl4es_glWindowPos3f(GLfloat x, GLfloat y, GLfloat z) {
     glstate->raster.rPos.z = z;	
 }
 
-void APIENTRY_GL4ES gl4es_glViewport(GLint x, GLint y, GLsizei width, GLsizei height) {
+EXPORT void APIENTRY_GL4ES gl4es_glViewport(GLint x, GLint y, GLsizei width, GLsizei height) {
 	if (glstate->fbo.current_fb->id != 0) {
     	gltexture_t *tex = gl4es_getTexture(glstate->fbo.current_fb->t_color[0], glstate->fbo.current_fb->color[0]);
 		if (tex->fbtex_ratio > 0.0f) {
@@ -93,7 +93,7 @@ void APIENTRY_GL4ES gl4es_glViewport(GLint x, GLint y, GLsizei width, GLsizei he
 	}
 }
 
-void APIENTRY_GL4ES gl4es_glScissor(GLint x, GLint y, GLsizei width, GLsizei height) {
+EXPORT void APIENTRY_GL4ES gl4es_glScissor(GLint x, GLint y, GLsizei width, GLsizei height) {
 	if (glstate->fbo.current_fb->id != 0) {
     	gltexture_t *tex = gl4es_getTexture(glstate->fbo.current_fb->t_color[0], glstate->fbo.current_fb->color[0]);
 		if (tex->fbtex_ratio > 0.0f) {
@@ -139,7 +139,7 @@ void popViewport() {
 }
 
 
-void APIENTRY_GL4ES gl4es_glPixelZoom(GLfloat xfactor, GLfloat yfactor) {
+EXPORT void APIENTRY_GL4ES gl4es_glPixelZoom(GLfloat xfactor, GLfloat yfactor) {
     if (glstate->list.active)
         if (glstate->list.compiling) {
 		NewStage(glstate->list.active, STAGE_RASTER);
@@ -153,7 +153,7 @@ void APIENTRY_GL4ES gl4es_glPixelZoom(GLfloat xfactor, GLfloat yfactor) {
 //printf("LIBGL: glPixelZoom(%f, %f)\n", xfactor, yfactor);
 }
 
-void APIENTRY_GL4ES gl4es_glPixelTransferf(GLenum pname, GLfloat param) {
+EXPORT void APIENTRY_GL4ES gl4es_glPixelTransferf(GLenum pname, GLfloat param) {
     if (glstate->list.active)
         if (glstate->list.compiling) {
 		NewStage(glstate->list.active, STAGE_RASTER);
@@ -361,7 +361,7 @@ void bitmap_flush() {
 }
 
 
-void APIENTRY_GL4ES gl4es_glBitmap(GLsizei width, GLsizei height, GLfloat xorig, GLfloat yorig,
+EXPORT void APIENTRY_GL4ES gl4es_glBitmap(GLsizei width, GLsizei height, GLfloat xorig, GLfloat yorig,
               GLfloat xmove, GLfloat ymove, const GLubyte *bitmap) {
 /*printf("glBitmap, xy={%f, %f}, xyorig={%f, %f}, size={%u, %u}, zoom={%f, %f}, viewport={%i, %i, %i, %i}\n", 	
 	glstate->raster.rPos.x, glstate->raster.rPos.y, xorig, yorig, width, height, glstate->raster.raster_zoomx, glstate->raster.raster_zoomy, glstate->raster.viewport.x, glstate->raster.viewport.y, glstate->raster.viewport.width, glstate->raster.viewport.height);*/
@@ -496,7 +496,7 @@ void APIENTRY_GL4ES gl4es_glBitmap(GLsizei width, GLsizei height, GLfloat xorig,
 	glstate->raster.bm_drawing = 1;
 }
 
-void APIENTRY_GL4ES gl4es_glDrawPixels(GLsizei width, GLsizei height, GLenum format,
+EXPORT void APIENTRY_GL4ES gl4es_glDrawPixels(GLsizei width, GLsizei height, GLenum format,
                   GLenum type, const GLvoid *data) {
     GLubyte *pixels, *from, *to;
     GLvoid *dst = NULL;
@@ -642,7 +642,7 @@ int map_pixelmap(GLenum map, int* wf, int** size, void** array) {
 	return 1;
 }
 
-void APIENTRY_GL4ES gl4es_glPixelMapfv(GLenum map, GLsizei mapsize, const GLfloat *values) {
+EXPORT void APIENTRY_GL4ES gl4es_glPixelMapfv(GLenum map, GLsizei mapsize, const GLfloat *values) {
 	if(mapsize>MAX_MAP_SIZE) {
 		errorShim(GL_INVALID_VALUE);
 		return;
@@ -673,7 +673,7 @@ void APIENTRY_GL4ES gl4es_glPixelMapfv(GLenum map, GLsizei mapsize, const GLfloa
 	}
 	*size = mapsize;
 }
-void APIENTRY_GL4ES gl4es_glPixelMapuiv(GLenum map,GLsizei mapsize, const GLuint *values) {
+EXPORT void APIENTRY_GL4ES gl4es_glPixelMapuiv(GLenum map,GLsizei mapsize, const GLuint *values) {
 	if(mapsize>MAX_MAP_SIZE) {
 		errorShim(GL_INVALID_VALUE);
 		return;
@@ -705,7 +705,7 @@ void APIENTRY_GL4ES gl4es_glPixelMapuiv(GLenum map,GLsizei mapsize, const GLuint
 	*size = mapsize;
 }
 
-void APIENTRY_GL4ES gl4es_glPixelMapusv(GLenum map,GLsizei mapsize, const GLushort *values) {
+EXPORT void APIENTRY_GL4ES gl4es_glPixelMapusv(GLenum map,GLsizei mapsize, const GLushort *values) {
 	if(mapsize>MAX_MAP_SIZE) {
 		errorShim(GL_INVALID_VALUE);
 		return;
@@ -736,7 +736,7 @@ void APIENTRY_GL4ES gl4es_glPixelMapusv(GLenum map,GLsizei mapsize, const GLusho
 	}
 	*size = mapsize;
 }
-void APIENTRY_GL4ES gl4es_glGetPixelMapfv(GLenum map, GLfloat *data) {
+EXPORT void APIENTRY_GL4ES gl4es_glGetPixelMapfv(GLenum map, GLfloat *data) {
 	int wf = 1;
 	void* array = NULL;
 	int* size = NULL;
@@ -753,7 +753,7 @@ void APIENTRY_GL4ES gl4es_glGetPixelMapfv(GLenum map, GLfloat *data) {
 			data[i] = p[i];
 	}
 }
-void APIENTRY_GL4ES gl4es_glGetPixelMapuiv(GLenum map, GLuint *data) {
+EXPORT void APIENTRY_GL4ES gl4es_glGetPixelMapuiv(GLenum map, GLuint *data) {
 	int wf = 1;
 	void* array = NULL;
 	int* size = NULL;
@@ -770,7 +770,7 @@ void APIENTRY_GL4ES gl4es_glGetPixelMapuiv(GLenum map, GLuint *data) {
 			data[i] = p[i];
 	}
 }
-void APIENTRY_GL4ES gl4es_glGetPixelMapusv(GLenum map, GLushort *data) {
+EXPORT void APIENTRY_GL4ES gl4es_glGetPixelMapusv(GLenum map, GLushort *data) {
 	int wf = 1;
 	void* array = NULL;
 	int* size = NULL;

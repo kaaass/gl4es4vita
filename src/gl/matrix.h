@@ -7,17 +7,17 @@
 #include "list.h"
 #include "matvec.h"
 
-void APIENTRY_GL4ES gl4es_glMatrixMode(GLenum mode);
-void APIENTRY_GL4ES gl4es_glPushMatrix(void);
-void APIENTRY_GL4ES gl4es_glPopMatrix(void);
-void APIENTRY_GL4ES gl4es_glLoadMatrixf(const GLfloat * m);
-void APIENTRY_GL4ES gl4es_glMultMatrixf(const GLfloat * m);
-void APIENTRY_GL4ES gl4es_glLoadIdentity(void);
-void APIENTRY_GL4ES gl4es_glTranslatef(GLfloat x, GLfloat y, GLfloat z);
-void APIENTRY_GL4ES gl4es_glScalef(GLfloat x, GLfloat y, GLfloat z);
-void APIENTRY_GL4ES gl4es_glRotatef(GLfloat angle, GLfloat x, GLfloat y, GLfloat z);
-void APIENTRY_GL4ES gl4es_glOrthof(GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat nearVal, GLfloat farVal);
-void APIENTRY_GL4ES gl4es_glFrustumf(GLfloat left,	GLfloat right, GLfloat bottom, GLfloat top,	GLfloat nearVal, GLfloat farVal);
+EXPORT void APIENTRY_GL4ES gl4es_glMatrixMode(GLenum mode);
+EXPORT void APIENTRY_GL4ES gl4es_glPushMatrix(void);
+EXPORT void APIENTRY_GL4ES gl4es_glPopMatrix(void);
+EXPORT void APIENTRY_GL4ES gl4es_glLoadMatrixf(const GLfloat * m);
+EXPORT void APIENTRY_GL4ES gl4es_glMultMatrixf(const GLfloat * m);
+EXPORT void APIENTRY_GL4ES gl4es_glLoadIdentity(void);
+EXPORT void APIENTRY_GL4ES gl4es_glTranslatef(GLfloat x, GLfloat y, GLfloat z);
+EXPORT void APIENTRY_GL4ES gl4es_glScalef(GLfloat x, GLfloat y, GLfloat z);
+EXPORT void APIENTRY_GL4ES gl4es_glRotatef(GLfloat angle, GLfloat x, GLfloat y, GLfloat z);
+EXPORT void APIENTRY_GL4ES gl4es_glOrthof(GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat nearVal, GLfloat farVal);
+EXPORT void APIENTRY_GL4ES gl4es_glFrustumf(GLfloat left,	GLfloat right, GLfloat bottom, GLfloat top,	GLfloat nearVal, GLfloat farVal);
 
 static inline GLfloat* getTexMat(int tmu) {
 	return glstate->texture_matrix[tmu]->stack+glstate->texture_matrix[tmu]->top*16;

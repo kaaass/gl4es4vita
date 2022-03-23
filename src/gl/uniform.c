@@ -105,7 +105,7 @@ int n_uniform(GLenum type) {
     return 0;
 }
 
-void APIENTRY_GL4ES gl4es_glGetUniformfv(GLuint program, GLint location, GLfloat *params) {
+EXPORT void APIENTRY_GL4ES gl4es_glGetUniformfv(GLuint program, GLint location, GLfloat *params) {
     DBG(printf("glGetUniformfv(%d, %d, %p)\n", program, location, params);)
     FLUSH_BEGINEND;
     CHECK_PROGRAM(void, program);
@@ -132,7 +132,7 @@ void APIENTRY_GL4ES gl4es_glGetUniformfv(GLuint program, GLint location, GLfloat
     }
     errorShim(GL_INVALID_VALUE);
 }
-void APIENTRY_GL4ES gl4es_glGetUniformiv(GLuint program, GLint location, GLint *params) {
+EXPORT void APIENTRY_GL4ES gl4es_glGetUniformiv(GLuint program, GLint location, GLint *params) {
     DBG(printf("glGetUniformiv(%d, %d, %p)\n", program, location, params);)
     FLUSH_BEGINEND;
     CHECK_PROGRAM(void, program);
@@ -256,7 +256,7 @@ void GoUniformiv(program_t *glprogram, GLint location, int size, int count, cons
         errorShim(GL_INVALID_OPERATION);    // no GLLS hardware
 }
 
-void APIENTRY_GL4ES gl4es_glUniform1f(GLint location, GLfloat v0) {
+EXPORT void APIENTRY_GL4ES gl4es_glUniform1f(GLint location, GLfloat v0) {
     DBG(printf("glUniform1f(%d, %f)\n", location, v0);)
     PUSH_IF_COMPILING(glUniform1f);
     GLuint program = glstate->glsl->program; 
@@ -264,7 +264,7 @@ void APIENTRY_GL4ES gl4es_glUniform1f(GLint location, GLfloat v0) {
     APPLY_PROGRAM(program, glprogram);
     GoUniformfv(glprogram, location, 1, 1, &v0);
 }
-void APIENTRY_GL4ES gl4es_glUniform2f(GLint location, GLfloat v0, GLfloat v1) {
+EXPORT void APIENTRY_GL4ES gl4es_glUniform2f(GLint location, GLfloat v0, GLfloat v1) {
     DBG(printf("glUniform2f(%d, %f, %f)\n", location, v0, v1);)
     PUSH_IF_COMPILING(glUniform2f);
     GLfloat fl[2] = {v0, v1};
@@ -273,7 +273,7 @@ void APIENTRY_GL4ES gl4es_glUniform2f(GLint location, GLfloat v0, GLfloat v1) {
     APPLY_PROGRAM(program, glprogram);
     GoUniformfv(glprogram, location, 2, 1, fl);
 }
-void APIENTRY_GL4ES gl4es_glUniform3f(GLint location, GLfloat v0, GLfloat v1, GLfloat v2) {
+EXPORT void APIENTRY_GL4ES gl4es_glUniform3f(GLint location, GLfloat v0, GLfloat v1, GLfloat v2) {
     DBG(printf("glUniform3f(%d, %f, %f, %f)\n", location, v0, v1, v2);)
     PUSH_IF_COMPILING(glUniform3f);
     GLfloat fl[3] = {v0, v1, v2};
@@ -282,7 +282,7 @@ void APIENTRY_GL4ES gl4es_glUniform3f(GLint location, GLfloat v0, GLfloat v1, GL
     APPLY_PROGRAM(program, glprogram);
     GoUniformfv(glprogram, location, 3, 1, fl);
 }
-void APIENTRY_GL4ES gl4es_glUniform4f(GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3) {
+EXPORT void APIENTRY_GL4ES gl4es_glUniform4f(GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3) {
     DBG(printf("glUniform4f(%d, %f, %f, %f, %f)\n", location, v0, v1, v2, v3);)
     PUSH_IF_COMPILING(glUniform4f);
     GLfloat fl[4] = {v0, v1, v2, v3};
@@ -291,7 +291,7 @@ void APIENTRY_GL4ES gl4es_glUniform4f(GLint location, GLfloat v0, GLfloat v1, GL
     APPLY_PROGRAM(program, glprogram);
     GoUniformfv(glprogram, location, 4, 1, fl);
 }
-void APIENTRY_GL4ES gl4es_glUniform1i(GLint location, GLint v0) {
+EXPORT void APIENTRY_GL4ES gl4es_glUniform1i(GLint location, GLint v0) {
     DBG(printf("glUniform1i(%d, %d)\n", location, v0);)
     PUSH_IF_COMPILING(glUniform1i);
     GLuint program = glstate->glsl->program;
@@ -299,7 +299,7 @@ void APIENTRY_GL4ES gl4es_glUniform1i(GLint location, GLint v0) {
     APPLY_PROGRAM(program, glprogram);
     GoUniformiv(glprogram, location, 1, 1, &v0);
 }
-void APIENTRY_GL4ES gl4es_glUniform2i(GLint location, GLint v0, GLint v1) {
+EXPORT void APIENTRY_GL4ES gl4es_glUniform2i(GLint location, GLint v0, GLint v1) {
     DBG(printf("glUniform2i(%d, %d, %d)\n", location, v0, v1);)
     PUSH_IF_COMPILING(glUniform2i);
     GLint fl[2] = {v0, v1};
@@ -308,7 +308,7 @@ void APIENTRY_GL4ES gl4es_glUniform2i(GLint location, GLint v0, GLint v1) {
     APPLY_PROGRAM(program, glprogram);
     GoUniformiv(glprogram, location, 2, 1, fl);
 }
-void APIENTRY_GL4ES gl4es_glUniform3i(GLint location, GLint v0, GLint v1, GLint v2) {
+EXPORT void APIENTRY_GL4ES gl4es_glUniform3i(GLint location, GLint v0, GLint v1, GLint v2) {
     DBG(printf("glUniform3i(%d, %d, %d, %d)\n", location, v0, v1, v2);)
     PUSH_IF_COMPILING(glUniform3i);
     GLint fl[3] = {v0, v1, v2};
@@ -317,7 +317,7 @@ void APIENTRY_GL4ES gl4es_glUniform3i(GLint location, GLint v0, GLint v1, GLint 
     APPLY_PROGRAM(program, glprogram);
     GoUniformiv(glprogram, location, 3, 1, fl);
 }
-void APIENTRY_GL4ES gl4es_glUniform4i(GLint location, GLint v0, GLint v1, GLint v2, GLint v3) {
+EXPORT void APIENTRY_GL4ES gl4es_glUniform4i(GLint location, GLint v0, GLint v1, GLint v2, GLint v3) {
     DBG(printf("glUniform4i(%d, %d, %d, %d, %d)\n", location, v0, v1, v2, v3);)
     PUSH_IF_COMPILING(glUniform4i);
     GLint fl[4] = {v0, v1, v2, v3};
@@ -327,7 +327,7 @@ void APIENTRY_GL4ES gl4es_glUniform4i(GLint location, GLint v0, GLint v1, GLint 
     GoUniformiv(glprogram, location, 4, 1, fl);
 }
 //TODO: the "v" variant and matrix variant cannot be pushed simply...
-void APIENTRY_GL4ES gl4es_glUniform1fv(GLint location, GLsizei count, const GLfloat *value) {
+EXPORT void APIENTRY_GL4ES gl4es_glUniform1fv(GLint location, GLsizei count, const GLfloat *value) {
     DBG(printf("glUniform1fv(%d, %d, %p) =>(%f)\n", location, count, value, value[0]);)
     PUSH_IF_COMPILING(glUniform1fv);
     GLuint program = glstate->glsl->program; 
@@ -335,7 +335,7 @@ void APIENTRY_GL4ES gl4es_glUniform1fv(GLint location, GLsizei count, const GLfl
     APPLY_PROGRAM(program, glprogram);
     GoUniformfv(glprogram, location, 1, count, value);
 }
-void APIENTRY_GL4ES gl4es_glUniform2fv(GLint location, GLsizei count, const GLfloat *value) {
+EXPORT void APIENTRY_GL4ES gl4es_glUniform2fv(GLint location, GLsizei count, const GLfloat *value) {
     DBG(printf("glUniform2fv(%d, %d, %p) =>(%f %f)\n", location, count, value, value[0], value[1]);)
     PUSH_IF_COMPILING(glUniform2fv);
     GLuint program = glstate->glsl->program; 
@@ -343,7 +343,7 @@ void APIENTRY_GL4ES gl4es_glUniform2fv(GLint location, GLsizei count, const GLfl
     APPLY_PROGRAM(program, glprogram);
     GoUniformfv(glprogram, location, 2, count, value);
 }
-void APIENTRY_GL4ES gl4es_glUniform3fv(GLint location, GLsizei count, const GLfloat *value) {
+EXPORT void APIENTRY_GL4ES gl4es_glUniform3fv(GLint location, GLsizei count, const GLfloat *value) {
     DBG(printf("glUniform3fv(%d, %d, %p) =>(%f %f, %f)\n", location, count, value, value[0], value[1], value[2]);)
     PUSH_IF_COMPILING(glUniform3fv);
     GLuint program = glstate->glsl->program; 
@@ -351,7 +351,7 @@ void APIENTRY_GL4ES gl4es_glUniform3fv(GLint location, GLsizei count, const GLfl
     APPLY_PROGRAM(program, glprogram);
     GoUniformfv(glprogram, location, 3, count, value);
 }
-void APIENTRY_GL4ES gl4es_glUniform4fv(GLint location, GLsizei count, const GLfloat *value) {
+EXPORT void APIENTRY_GL4ES gl4es_glUniform4fv(GLint location, GLsizei count, const GLfloat *value) {
     DBG(printf("glUniform4fv(%d, %d, %p) =>(%f %f, %f, %f)\n", location, count, value, value[0], value[1], value[2], value[3]);)
     PUSH_IF_COMPILING(glUniform4fv);
     GLuint program = glstate->glsl->program; 
@@ -359,28 +359,28 @@ void APIENTRY_GL4ES gl4es_glUniform4fv(GLint location, GLsizei count, const GLfl
     APPLY_PROGRAM(program, glprogram);
     GoUniformfv(glprogram, location, 4, count, value);
 }
-void APIENTRY_GL4ES gl4es_glUniform1iv(GLint location, GLsizei count, const GLint *value) {
+EXPORT void APIENTRY_GL4ES gl4es_glUniform1iv(GLint location, GLsizei count, const GLint *value) {
     PUSH_IF_COMPILING(glUniform1iv);
     GLuint program = glstate->glsl->program;
     CHECK_PROGRAM(void, program);
     APPLY_PROGRAM(program, glprogram);
     GoUniformiv(glprogram, location, 1, count, value);
 }
-void APIENTRY_GL4ES gl4es_glUniform2iv(GLint location, GLsizei count, const GLint *value) {
+EXPORT void APIENTRY_GL4ES gl4es_glUniform2iv(GLint location, GLsizei count, const GLint *value) {
     PUSH_IF_COMPILING(glUniform2iv);
     GLuint program = glstate->glsl->program;
     CHECK_PROGRAM(void, program);
     APPLY_PROGRAM(program, glprogram);
     GoUniformiv(glprogram, location, 2, count, value);
 }
-void APIENTRY_GL4ES gl4es_glUniform3iv(GLint location, GLsizei count, const GLint *value) {
+EXPORT void APIENTRY_GL4ES gl4es_glUniform3iv(GLint location, GLsizei count, const GLint *value) {
     PUSH_IF_COMPILING(glUniform3iv);
     GLuint program = glstate->glsl->program;
     CHECK_PROGRAM(void, program);
     APPLY_PROGRAM(program, glprogram);
     GoUniformiv(glprogram, location, 3, count, value);
 }
-void APIENTRY_GL4ES gl4es_glUniform4iv(GLint location, GLsizei count, const GLint *value) {
+EXPORT void APIENTRY_GL4ES gl4es_glUniform4iv(GLint location, GLsizei count, const GLint *value) {
     PUSH_IF_COMPILING(glUniform4iv);
     GLuint program = glstate->glsl->program;
     CHECK_PROGRAM(void, program);
@@ -388,7 +388,7 @@ void APIENTRY_GL4ES gl4es_glUniform4iv(GLint location, GLsizei count, const GLin
     GoUniformiv(glprogram, location, 4, count, value);
 }
 
-void APIENTRY_GL4ES gl4es_glUniformMatrix2fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value) {
+EXPORT void APIENTRY_GL4ES gl4es_glUniformMatrix2fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value) {
     DBG(printf("glUniformMatrix2fv(%d, %d, %d, %p)\n", location, count, transpose, value);)
     PUSH_IF_COMPILING(glUniformMatrix2fv);
     GLuint program = glstate->glsl->program;
@@ -397,14 +397,14 @@ void APIENTRY_GL4ES gl4es_glUniformMatrix2fv(GLint location, GLsizei count, GLbo
     GoUniformMatrix2fv(glprogram, location, count, transpose, value);
 }
 
-void APIENTRY_GL4ES gl4es_glProgramUniform1f(GLuint program, GLint location, GLfloat v0) {
+EXPORT void APIENTRY_GL4ES gl4es_glProgramUniform1f(GLuint program, GLint location, GLfloat v0) {
     DBG(printf("glUniform1f(%d, %f)\n", location, v0);)
     PUSH_IF_COMPILING(glUniform1f);
     CHECK_PROGRAM(void, program);
     APPLY_PROGRAM(program, glprogram);
     GoUniformfv(glprogram, location, 1, 1, &v0);
 }
-void APIENTRY_GL4ES gl4es_glProgramUniform2f(GLuint program, GLint location, GLfloat v0, GLfloat v1) {
+EXPORT void APIENTRY_GL4ES gl4es_glProgramUniform2f(GLuint program, GLint location, GLfloat v0, GLfloat v1) {
     DBG(printf("glUniform2f(%d, %f, %f)\n", location, v0, v1);)
     PUSH_IF_COMPILING(glUniform2f);
     GLfloat fl[2] = {v0, v1};
@@ -412,7 +412,7 @@ void APIENTRY_GL4ES gl4es_glProgramUniform2f(GLuint program, GLint location, GLf
     APPLY_PROGRAM(program, glprogram);
     GoUniformfv(glprogram, location, 2, 1, fl);
 }
-void APIENTRY_GL4ES gl4es_glProgramUniform3f(GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2) {
+EXPORT void APIENTRY_GL4ES gl4es_glProgramUniform3f(GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2) {
     DBG(printf("glUniform3f(%d, %f, %f, %f)\n", location, v0, v1, v2);)
     PUSH_IF_COMPILING(glUniform3f);
     GLfloat fl[3] = {v0, v1, v2};
@@ -420,7 +420,7 @@ void APIENTRY_GL4ES gl4es_glProgramUniform3f(GLuint program, GLint location, GLf
     APPLY_PROGRAM(program, glprogram);
     GoUniformfv(glprogram, location, 3, 1, fl);
 }
-void APIENTRY_GL4ES gl4es_glProgramUniform4f(GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3) {
+EXPORT void APIENTRY_GL4ES gl4es_glProgramUniform4f(GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3) {
     DBG(printf("glUniform4f(%d, %f, %f, %f, %f)\n", location, v0, v1, v2, v3);)
     PUSH_IF_COMPILING(glUniform4f);
     GLfloat fl[4] = {v0, v1, v2, v3};
@@ -428,14 +428,14 @@ void APIENTRY_GL4ES gl4es_glProgramUniform4f(GLuint program, GLint location, GLf
     APPLY_PROGRAM(program, glprogram);
     GoUniformfv(glprogram, location, 4, 1, fl);
 }
-void APIENTRY_GL4ES gl4es_glProgramUniform1i(GLuint program, GLint location, GLint v0) {
+EXPORT void APIENTRY_GL4ES gl4es_glProgramUniform1i(GLuint program, GLint location, GLint v0) {
     DBG(printf("glUniform1i(%d, %d)\n", location, v0);)
     PUSH_IF_COMPILING(glUniform1i);
     CHECK_PROGRAM(void, program);
     APPLY_PROGRAM(program, glprogram);
     GoUniformiv(glprogram, location, 1, 1, &v0);
 }
-void APIENTRY_GL4ES gl4es_glProgramUniform2i(GLuint program, GLint location, GLint v0, GLint v1) {
+EXPORT void APIENTRY_GL4ES gl4es_glProgramUniform2i(GLuint program, GLint location, GLint v0, GLint v1) {
     DBG(printf("glUniform2i(%d, %d, %d)\n", location, v0, v1);)
     PUSH_IF_COMPILING(glUniform2i);
     GLint fl[2] = {v0, v1};
@@ -443,7 +443,7 @@ void APIENTRY_GL4ES gl4es_glProgramUniform2i(GLuint program, GLint location, GLi
     APPLY_PROGRAM(program, glprogram);
     GoUniformiv(glprogram, location, 2, 1, fl);
 }
-void APIENTRY_GL4ES gl4es_glProgramUniform3i(GLuint program, GLint location, GLint v0, GLint v1, GLint v2) {
+EXPORT void APIENTRY_GL4ES gl4es_glProgramUniform3i(GLuint program, GLint location, GLint v0, GLint v1, GLint v2) {
     DBG(printf("glUniform3i(%d, %d, %d, %d)\n", location, v0, v1, v2);)
     PUSH_IF_COMPILING(glUniform3i);
     GLint fl[3] = {v0, v1, v2};
@@ -451,7 +451,7 @@ void APIENTRY_GL4ES gl4es_glProgramUniform3i(GLuint program, GLint location, GLi
     APPLY_PROGRAM(program, glprogram);
     GoUniformiv(glprogram, location, 3, 1, fl);
 }
-void APIENTRY_GL4ES gl4es_glProgramUniform4i(GLuint program, GLint location, GLint v0, GLint v1, GLint v2, GLint v3) {
+EXPORT void APIENTRY_GL4ES gl4es_glProgramUniform4i(GLuint program, GLint location, GLint v0, GLint v1, GLint v2, GLint v3) {
     DBG(printf("glUniform4i(%d, %d, %d, %d, %d)\n", location, v0, v1, v2, v3);)
     PUSH_IF_COMPILING(glUniform4i);
     GLint fl[4] = {v0, v1, v2, v3};
@@ -460,60 +460,60 @@ void APIENTRY_GL4ES gl4es_glProgramUniform4i(GLuint program, GLint location, GLi
     GoUniformiv(glprogram, location, 4, 1, fl);
 }
 //TODO: the "v" variant and matrix variant cannot be pushed simply...
-void APIENTRY_GL4ES gl4es_glProgramUniform1fv(GLuint program, GLint location, GLsizei count, const GLfloat *value) {
+EXPORT void APIENTRY_GL4ES gl4es_glProgramUniform1fv(GLuint program, GLint location, GLsizei count, const GLfloat *value) {
     DBG(printf("glUniform1fv(%d, %d, %p) =>(%f)\n", location, count, value, value[0]);)
     PUSH_IF_COMPILING(glUniform1fv);
     CHECK_PROGRAM(void, program);
     APPLY_PROGRAM(program, glprogram);
     GoUniformfv(glprogram, location, 1, count, value);
 }
-void APIENTRY_GL4ES gl4es_glProgramUniform2fv(GLuint program, GLint location, GLsizei count, const GLfloat *value) {
+EXPORT void APIENTRY_GL4ES gl4es_glProgramUniform2fv(GLuint program, GLint location, GLsizei count, const GLfloat *value) {
     DBG(printf("glUniform2fv(%d, %d, %p) =>(%f %f)\n", location, count, value, value[0], value[1]);)
     PUSH_IF_COMPILING(glUniform2fv);
     CHECK_PROGRAM(void, program);
     APPLY_PROGRAM(program, glprogram);
     GoUniformfv(glprogram, location, 2, count, value);
 }
-void APIENTRY_GL4ES gl4es_glProgramUniform3fv(GLuint program, GLint location, GLsizei count, const GLfloat *value) {
+EXPORT void APIENTRY_GL4ES gl4es_glProgramUniform3fv(GLuint program, GLint location, GLsizei count, const GLfloat *value) {
     DBG(printf("glUniform3fv(%d, %d, %p) =>(%f %f, %f)\n", location, count, value, value[0], value[1], value[2]);)
     PUSH_IF_COMPILING(glUniform3fv);
     CHECK_PROGRAM(void, program);
     APPLY_PROGRAM(program, glprogram);
     GoUniformfv(glprogram, location, 3, count, value);
 }
-void APIENTRY_GL4ES gl4es_glProgramUniform4fv(GLuint program, GLint location, GLsizei count, const GLfloat *value) {
+EXPORT void APIENTRY_GL4ES gl4es_glProgramUniform4fv(GLuint program, GLint location, GLsizei count, const GLfloat *value) {
     DBG(printf("glUniform4fv(%d, %d, %p) =>(%f %f, %f, %f)\n", location, count, value, value[0], value[1], value[2], value[3]);)
     PUSH_IF_COMPILING(glUniform4fv);
     CHECK_PROGRAM(void, program);
     APPLY_PROGRAM(program, glprogram);
     GoUniformfv(glprogram, location, 4, count, value);
 }
-void APIENTRY_GL4ES gl4es_glProgramUniform1iv(GLuint program, GLint location, GLsizei count, const GLint *value) {
+EXPORT void APIENTRY_GL4ES gl4es_glProgramUniform1iv(GLuint program, GLint location, GLsizei count, const GLint *value) {
     PUSH_IF_COMPILING(glUniform1iv);
     CHECK_PROGRAM(void, program);
     APPLY_PROGRAM(program, glprogram);
     GoUniformiv(glprogram, location, 1, count, value);
 }
-void APIENTRY_GL4ES gl4es_glProgramUniform2iv(GLuint program, GLint location, GLsizei count, const GLint *value) {
+EXPORT void APIENTRY_GL4ES gl4es_glProgramUniform2iv(GLuint program, GLint location, GLsizei count, const GLint *value) {
     PUSH_IF_COMPILING(glUniform2iv);
     CHECK_PROGRAM(void, program);
     APPLY_PROGRAM(program, glprogram);
     GoUniformiv(glprogram, location, 2, count, value);
 }
-void APIENTRY_GL4ES gl4es_glProgramUniform3iv(GLuint program, GLint location, GLsizei count, const GLint *value) {
+EXPORT void APIENTRY_GL4ES gl4es_glProgramUniform3iv(GLuint program, GLint location, GLsizei count, const GLint *value) {
     PUSH_IF_COMPILING(glUniform3iv);
     CHECK_PROGRAM(void, program);
     APPLY_PROGRAM(program, glprogram);
     GoUniformiv(glprogram, location, 3, count, value);
 }
-void APIENTRY_GL4ES gl4es_glProgramUniform4iv(GLuint program, GLint location, GLsizei count, const GLint *value) {
+EXPORT void APIENTRY_GL4ES gl4es_glProgramUniform4iv(GLuint program, GLint location, GLsizei count, const GLint *value) {
     PUSH_IF_COMPILING(glUniform4iv);
     CHECK_PROGRAM(void, program);
     APPLY_PROGRAM(program, glprogram);
     GoUniformiv(glprogram, location, 4, count, value);
 }
 
-void APIENTRY_GL4ES gl4es_glProgramUniformMatrix2fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value) {
+EXPORT void APIENTRY_GL4ES gl4es_glProgramUniformMatrix2fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value) {
     DBG(printf("glUniformMatrix2fv(%d, %d, %d, %p)\n", location, count, transpose, value);)
     PUSH_IF_COMPILING(glUniformMatrix2fv);
     CHECK_PROGRAM(void, program);
@@ -570,7 +570,7 @@ void GoUniformMatrix2fv(program_t *glprogram, GLint location, GLsizei count, GLb
         errorShim(GL_INVALID_OPERATION);    // no GLSL hardware
 }
 
-void APIENTRY_GL4ES gl4es_glUniformMatrix3fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value) {
+EXPORT void APIENTRY_GL4ES gl4es_glUniformMatrix3fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value) {
     DBG(printf("glUniformMatrix3fv(%d, %d, %d, %p)\n", location, count, transpose, value);)
     PUSH_IF_COMPILING(glUniformMatrix3fv);
     GLuint program = glstate->glsl->program;
@@ -579,7 +579,7 @@ void APIENTRY_GL4ES gl4es_glUniformMatrix3fv(GLint location, GLsizei count, GLbo
     GoUniformMatrix3fv(glprogram, location, count, transpose, value);
 }
 
-void APIENTRY_GL4ES gl4es_glProgramUniformMatrix3fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value) {
+EXPORT void APIENTRY_GL4ES gl4es_glProgramUniformMatrix3fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value) {
     DBG(printf("glUniformMatrix3fv(%d, %d, %d, %p)\n", location, count, transpose, value);)
     PUSH_IF_COMPILING(glUniformMatrix3fv);
     CHECK_PROGRAM(void, program);
@@ -635,7 +635,7 @@ void GoUniformMatrix3fv(program_t *glprogram, GLint location, GLsizei count, GLb
     } else
         errorShim(GL_INVALID_OPERATION);    // no GLSL hardware
 }
-void APIENTRY_GL4ES gl4es_glUniformMatrix4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value) {
+EXPORT void APIENTRY_GL4ES gl4es_glUniformMatrix4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value) {
     DBG(printf("glUniformMatrix4fv(%d, %d, %d, %p) p=>(%f, %f, %f, %f, %f...)\n", location, count, transpose, value, value[0], value[1], value[2], value[3], value[4]);)
     PUSH_IF_COMPILING(glUniformMatrix4fv);
     GLuint program = glstate->glsl->program;
@@ -643,7 +643,7 @@ void APIENTRY_GL4ES gl4es_glUniformMatrix4fv(GLint location, GLsizei count, GLbo
     APPLY_PROGRAM(program, glprogram);
     GoUniformMatrix4fv(glprogram, location, count, transpose, value);
 }
-void APIENTRY_GL4ES gl4es_glProgramUniformMatrix4fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value) {
+EXPORT void APIENTRY_GL4ES gl4es_glProgramUniformMatrix4fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value) {
     DBG(printf("glUniformMatrix4fv(%d, %d, %d, %p) p=>(%f, %f, %f, %f, %f...)\n", location, count, transpose, value, value[0], value[1], value[2], value[3], value[4]);)
     PUSH_IF_COMPILING(glUniformMatrix4fv);
     CHECK_PROGRAM(void, program);

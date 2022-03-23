@@ -39,7 +39,7 @@ void push_hit() {
 }
 
 
-GLint APIENTRY_GL4ES gl4es_glRenderMode(GLenum mode) {
+EXPORT GLint APIENTRY_GL4ES gl4es_glRenderMode(GLenum mode) {
 	if(glstate->list.compiling) {errorShim(GL_INVALID_OPERATION); return 0;}
 	FLUSH_BEGINEND;
 
@@ -73,7 +73,7 @@ GLint APIENTRY_GL4ES gl4es_glRenderMode(GLenum mode) {
 	return ret;
 }
 
-void APIENTRY_GL4ES gl4es_glInitNames(void) {
+EXPORT void APIENTRY_GL4ES gl4es_glInitNames(void) {
 	if(glstate->list.active) {
 		NewStage(glstate->list.active, STAGE_RENDER);
 		glstate->list.active->render_op = 1;
@@ -87,7 +87,7 @@ void APIENTRY_GL4ES gl4es_glInitNames(void) {
     noerrorShim();
 }
 
-void APIENTRY_GL4ES gl4es_glPopName(void) {
+EXPORT void APIENTRY_GL4ES gl4es_glPopName(void) {
 	FLUSH_BEGINEND;
 	if(glstate->list.active) {
 		NewStage(glstate->list.active, STAGE_RENDER);
@@ -104,7 +104,7 @@ void APIENTRY_GL4ES gl4es_glPopName(void) {
         errorShim(GL_STACK_UNDERFLOW);
 }
 
-void APIENTRY_GL4ES gl4es_glPushName(GLuint name) {
+EXPORT void APIENTRY_GL4ES gl4es_glPushName(GLuint name) {
 	FLUSH_BEGINEND;
 	if(glstate->list.active) {
 		NewStage(glstate->list.active, STAGE_RENDER);
@@ -123,7 +123,7 @@ void APIENTRY_GL4ES gl4es_glPushName(GLuint name) {
 	}
 }
 
-void APIENTRY_GL4ES gl4es_glLoadName(GLuint name) {
+EXPORT void APIENTRY_GL4ES gl4es_glLoadName(GLuint name) {
 	FLUSH_BEGINEND;
 	if(glstate->list.active) {
 		NewStage(glstate->list.active, STAGE_RENDER);
@@ -142,7 +142,7 @@ void APIENTRY_GL4ES gl4es_glLoadName(GLuint name) {
     glstate->namestack.names[glstate->namestack.top-1] = name;
 }
 
-void APIENTRY_GL4ES gl4es_glSelectBuffer(GLsizei size, GLuint *buffer) {
+EXPORT void APIENTRY_GL4ES gl4es_glSelectBuffer(GLsizei size, GLuint *buffer) {
     FLUSH_BEGINEND;
 		
     noerrorShim();

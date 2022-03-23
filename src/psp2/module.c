@@ -1,6 +1,10 @@
 #include <kernel.h>
 
-#ifndef STATICLIB
+#ifdef PRX_MODULE
+
+#include <GL/gl.h>
+
+extern int gl4es_glDepthFunc(GLenum func);
 
 int module_stop(SceSize argc, const void *args)
 {

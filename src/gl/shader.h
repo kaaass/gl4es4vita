@@ -35,17 +35,17 @@ typedef struct shader_s {
 
 KHASH_MAP_DECLARE_INT(shaderlist, shader_t *);
 
-GLuint APIENTRY_GL4ES gl4es_glCreateShader(GLenum shaderType);
-void APIENTRY_GL4ES gl4es_glDeleteShader(GLuint shader);
-void APIENTRY_GL4ES gl4es_glCompileShader(GLuint shader);
-void APIENTRY_GL4ES gl4es_glShaderSource(GLuint shader, GLsizei count, const GLchar * const *string, const GLint *length);
-void APIENTRY_GL4ES gl4es_glGetShaderSource(GLuint shader, GLsizei bufSize, GLsizei *length, GLchar *source);
-GLboolean APIENTRY_GL4ES gl4es_glIsShader(GLuint shader);
-void APIENTRY_GL4ES gl4es_glGetShaderInfoLog(GLuint shader, GLsizei maxLength, GLsizei *length, GLchar *infoLog);
-void APIENTRY_GL4ES gl4es_glGetShaderiv(GLuint shader, GLenum pname, GLint *params);
-void APIENTRY_GL4ES gl4es_glGetShaderPrecisionFormat(GLenum shaderType, GLenum precisionType, GLint *range, GLint *precision);
-void APIENTRY_GL4ES gl4es_glShaderBinary(GLsizei count, const GLuint *shaders, GLenum binaryFormat, const void *binary, GLsizei length);
-void APIENTRY_GL4ES gl4es_glReleaseShaderCompiler(void);
+EXPORT GLuint APIENTRY_GL4ES gl4es_glCreateShader(GLenum shaderType);
+EXPORT void APIENTRY_GL4ES gl4es_glDeleteShader(GLuint shader);
+EXPORT void APIENTRY_GL4ES gl4es_glCompileShader(GLuint shader);
+EXPORT void APIENTRY_GL4ES gl4es_glShaderSource(GLuint shader, GLsizei count, const GLchar * const *string, const GLint *length);
+EXPORT void APIENTRY_GL4ES gl4es_glGetShaderSource(GLuint shader, GLsizei bufSize, GLsizei *length, GLchar *source);
+EXPORT GLboolean APIENTRY_GL4ES gl4es_glIsShader(GLuint shader);
+EXPORT void APIENTRY_GL4ES gl4es_glGetShaderInfoLog(GLuint shader, GLsizei maxLength, GLsizei *length, GLchar *infoLog);
+EXPORT void APIENTRY_GL4ES gl4es_glGetShaderiv(GLuint shader, GLenum pname, GLint *params);
+EXPORT void APIENTRY_GL4ES gl4es_glGetShaderPrecisionFormat(GLenum shaderType, GLenum precisionType, GLint *range, GLint *precision);
+EXPORT void APIENTRY_GL4ES gl4es_glShaderBinary(GLsizei count, const GLuint *shaders, GLenum binaryFormat, const void *binary, GLsizei length);
+EXPORT void APIENTRY_GL4ES gl4es_glReleaseShaderCompiler(void);
 
 void accumShaderNeeds(GLuint shader, shaderconv_need_t *need);
 int isShaderCompatible(GLuint shader, shaderconv_need_t *need);
@@ -72,6 +72,6 @@ shader_t *getShader(GLuint shader);
 
 // ========== GL_ARB_shader_objects ==============
 
-GLhandleARB APIENTRY_GL4ES gl4es_glCreateShaderObject(GLenum shaderType);
+EXPORT GLhandleARB APIENTRY_GL4ES gl4es_glCreateShaderObject(GLenum shaderType);
     
 #endif // _GL4ES_SHADER_H_

@@ -7,14 +7,17 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gl4es", "gl4es.vcxproj", "{
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|PSVita = Debug|PSVita
-		Release|PSVita = Release|PSVita
+		PRX-Debug|PSVita = PRX-Debug|PSVita
+		PRX-Release|PSVita = PRX-Release|PSVita
+		Static-Release|PSVita = Static-Release|PSVita
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{108A0468-90E5-46B9-891B-F2D476C50F1A}.Debug|PSVita.ActiveCfg = Debug|PSVita
-		{108A0468-90E5-46B9-891B-F2D476C50F1A}.Debug|PSVita.Build.0 = Debug|PSVita
-		{108A0468-90E5-46B9-891B-F2D476C50F1A}.Release|PSVita.ActiveCfg = Release|PSVita
-		{108A0468-90E5-46B9-891B-F2D476C50F1A}.Release|PSVita.Build.0 = Release|PSVita
+		{108A0468-90E5-46B9-891B-F2D476C50F1A}.PRX-Debug|PSVita.ActiveCfg = PRX-Debug|PSVita
+		{108A0468-90E5-46B9-891B-F2D476C50F1A}.PRX-Debug|PSVita.Build.0 = PRX-Debug|PSVita
+		{108A0468-90E5-46B9-891B-F2D476C50F1A}.PRX-Release|PSVita.ActiveCfg = PRX-Release|PSVita
+		{108A0468-90E5-46B9-891B-F2D476C50F1A}.PRX-Release|PSVita.Build.0 = PRX-Release|PSVita
+		{108A0468-90E5-46B9-891B-F2D476C50F1A}.Static-Release|PSVita.ActiveCfg = Static-Release|PSVita
+		{108A0468-90E5-46B9-891B-F2D476C50F1A}.Static-Release|PSVita.Build.0 = Static-Release|PSVita
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

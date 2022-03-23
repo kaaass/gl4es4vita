@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="Debug|PSVita">
-      <Configuration>Debug</Configuration>
+    <ProjectConfiguration Include="PRX-Debug|PSVita">
+      <Configuration>PRX-Debug</Configuration>
       <Platform>PSVita</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Release|PSVita">
-      <Configuration>Release</Configuration>
+    <ProjectConfiguration Include="PRX-Release|PSVita">
+      <Configuration>PRX-Release</Configuration>
+      <Platform>PSVita</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Static-Release|PSVita">
+      <Configuration>Static-Release</Configuration>
       <Platform>PSVita</Platform>
     </ProjectConfiguration>
   </ItemGroup>
@@ -14,11 +18,14 @@
     <ProjectGuid>{108A0468-90E5-46B9-891B-F2D476C50F1A}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|PSVita'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PRX-Debug|PSVita'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|PSVita'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Static-Release|PSVita'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PRX-Release|PSVita'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <PropertyGroup Condition="'$(DebuggerFlavor)'=='PSVitaDebugger'" Label="OverrideDebuggerDefaults">
@@ -32,22 +39,30 @@
   </PropertyGroup>
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|PSVita'">
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='PRX-Debug|PSVita'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|PSVita'">
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Static-Release|PSVita'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='PRX-Release|PSVita'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|PSVita'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PRX-Debug|PSVita'">
     <IncludePath>M:\Yeeeeeeeet\PSVita-Projects\gl4es\include;M:\Yeeeeeeeet\PSVita-Projects\gl4es\src\glx;$(IncludePath)</IncludePath>
     <TargetName>libGL</TargetName>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|PSVita'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Static-Release|PSVita'">
     <IncludePath>M:\Yeeeeeeeet\PSVita-Projects\gl4es\include;M:\Yeeeeeeeet\PSVita-Projects\gl4es\src\glx;$(IncludePath)</IncludePath>
     <TargetName>libGL</TargetName>
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|PSVita'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PRX-Release|PSVita'">
+    <IncludePath>M:\Yeeeeeeeet\PSVita-Projects\gl4es\include;M:\Yeeeeeeeet\PSVita-Projects\gl4es\src\glx;$(IncludePath)</IncludePath>
+    <TargetName>libGL</TargetName>
+    <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='PRX-Debug|PSVita'">
     <ClCompile>
       <PreprocessorDefinitions>GL_GLEXT_PROTOTYPES;NO_GBM;NOEGL;NOX11;NO_LOADER;NO_INIT_CONSTRUCTOR;USE_CLOCK;DEFAULT_ES=2;PRX_MODULE;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -62,15 +77,37 @@
       <AdditionalLibraryDirectories>$(SCE_PSP2_SDK_DIR)\target\lib\vdsuite;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|PSVita'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Static-Release|PSVita'">
     <ClCompile>
       <PreprocessorDefinitions>NO_GBM;NOEGL;NOX11;NO_LOADER;USE_CLOCK;NO_INIT_CONSTRUCTOR;DEFAULT_ES=2;STATICLIB;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <OptimizationLevel>Level2</OptimizationLevel>
+      <OptimizationLevel>Level3</OptimizationLevel>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <ProcessorNumber>16</ProcessorNumber>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <FastMath>true</FastMath>
     </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='PRX-Release|PSVita'">
+    <ClCompile>
+      <PreprocessorDefinitions>GL_GLEXT_PROTOTYPES;NO_GBM;NOEGL;NOX11;NO_LOADER;USE_CLOCK;NO_INIT_CONSTRUCTOR;DEFAULT_ES=2;PRX_MODULE;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <OptimizationLevel>Level3</OptimizationLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <ProcessorNumber>16</ProcessorNumber>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <FastMath>true</FastMath>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(SCE_PSP2_SDK_DIR)\target\lib\vdsuite;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libSceRtcUser_stub.a</AdditionalDependencies>
+      <AdditionalOptions>
+      </AdditionalOptions>
+      <GenerateSnMapFile>FullMapFile</GenerateSnMapFile>
+    </Link>
+    <PostBuildEvent>
+      <Command>"$(SCE_PSP2_SDK_DIR)\host_tools\build\bin\vdsuite-libgen.exe" --output-kind VitasdkStub "$(SolutionDir)lib\vitasdk_out\GLESv2.yml" "$(OutDir)libGLESv2_stub_vitasdk.a"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\glx\drmfunc.h" />

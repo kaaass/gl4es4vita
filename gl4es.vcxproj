@@ -60,7 +60,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='PRX-Release|PSVita'">
     <IncludePath>M:\Yeeeeeeeet\PSVita-Projects\gl4es\include;M:\Yeeeeeeeet\PSVita-Projects\gl4es\src\glx;$(IncludePath)</IncludePath>
     <TargetName>libGL</TargetName>
-    <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>
+    <PostBuildEventUseInBuild>true</PostBuildEventUseInBuild>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='PRX-Debug|PSVita'">
     <ClCompile>
@@ -106,7 +106,7 @@
       <GenerateSnMapFile>FullMapFile</GenerateSnMapFile>
     </Link>
     <PostBuildEvent>
-      <Command>"$(SCE_PSP2_SDK_DIR)\host_tools\build\bin\vdsuite-libgen.exe" --output-kind VitasdkStub "$(SolutionDir)lib\vitasdk_out\GLESv2.yml" "$(OutDir)libGLESv2_stub_vitasdk.a"</Command>
+      <Command>"$(SCE_PSP2_SDK_DIR)\host_tools\build\bin\vdsuite-libgen.exe" --output-kind VitasdkStub "$(SolutionDir)lib\vitasdk_out\libGL.yml" "$(OutDir)libGL_stub_vitasdk.a"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

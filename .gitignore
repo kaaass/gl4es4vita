@@ -1,7 +1,6 @@
 .gdb_history
 .vscode/
 CMakeFiles/
-lib/
 Makefile
 CMakeCache.txt
 CTestTestfile.cmake

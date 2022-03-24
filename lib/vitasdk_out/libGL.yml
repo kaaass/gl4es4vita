@@ -16,6 +16,7 @@ modules:
           close_gl4es: 0x9D87B261
           dummy: 0x04389C82
           gl4es_GetProcAddress: 0x8C291D5C
+          gl4es_getenv: 0x034B7E83
           gl4es_glAccum: 0x19AE3FB1
           gl4es_glActiveTexture: 0x1524FD30
           gl4es_glAlphaFunc: 0x3A598875
@@ -979,6 +980,7 @@ modules:
           gl4es_glWindowPos3usv: 0x42386903
           gl4es_post_swap: 0xED1B9B55
           gl4es_pre_swap: 0x50F33AF4
+          gl4es_setenv: 0x5DEA822D
           glClampColorARB: 0x714535CE
           initialize_gl4es: 0x1749D113
           proc_address: 0xB315242F

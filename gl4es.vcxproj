@@ -140,6 +140,7 @@
     <ClInclude Include="src\gl\fpe_shader.h" />
     <ClInclude Include="src\gl\framebuffers.h" />
     <ClInclude Include="src\gl\gl4es.h" />
+    <ClInclude Include="src\gl\gl4es_getenv.h" />
     <ClInclude Include="src\gl\glcase.h" />
     <ClInclude Include="src\gl\glstate.h" />
     <ClInclude Include="src\gl\gl_lookup.h" />
@@ -213,6 +214,7 @@
     <ClCompile Include="src\gl\framebuffers.c" />
     <ClCompile Include="src\gl\getter.c" />
     <ClCompile Include="src\gl\gl4es.c" />
+    <ClCompile Include="src\gl\gl4es_getenv.c" />
     <ClCompile Include="src\gl\glstate.c" />
     <ClCompile Include="src\gl\gl_lookup.c" />
     <ClCompile Include="src\gl\hint.c" />

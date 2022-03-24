@@ -1,5 +1,7 @@
 #ifndef _GL4ES_ENVVARS_H_
 #define _GL4ES_ENVVARS_H_
+
+#include "gl4es_getenv.h"
 //----------------------------------------------------------------------------
 const char* GetEnvVar(const char *name);
 //----------------------------------------------------------------------------

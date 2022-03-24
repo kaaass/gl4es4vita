@@ -227,6 +227,9 @@
     <ClInclude Include="src\gl\buffers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\gl\gl4es_getenv.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\glx\hardext.c">
@@ -440,6 +443,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="prx.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gl\gl4es_getenv.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

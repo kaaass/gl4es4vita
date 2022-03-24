@@ -18,6 +18,10 @@ extern "C" {
 void set_getprocaddress(void *(APIENTRY_GL4ES *new_proc_address)(const char *));
 // reguired with NOEGL
 void set_getmainfbsize(void (APIENTRY_GL4ES *new_getMainFBSize)(int* width, int* height));
+// for platforms that do not have setenv, use this instead
+int gl4es_setenv(const char *name, const char *value, int overwrite);
+// for platforms that do not have getenv, use this instead
+char *gl4es_getenv(const char *name);
 // do this before any GL calls if init constructors are disabled.
 void initialize_gl4es(void);
 // do this to uninitialize GL4ES if init constructors are disabled.

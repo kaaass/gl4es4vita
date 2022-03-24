@@ -1238,7 +1238,7 @@ void show_fps() {
 #if defined(__psp2__)
 		SceDateTime time;
 		sceRtcGetCurrentClockLocalTime(&time);
-		now = time.microsecond * 1000 * 1000;
+		now = time.second;
 #elif defined(_WIN32)
         struct timeval out;
         gettimeofday(&out, NULL);

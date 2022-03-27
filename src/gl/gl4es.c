@@ -1236,9 +1236,9 @@ void show_fps() {
         static float avg, fps = 0;
         static int frame1, last_frame, frame, now, current_frames;
 #if defined(__psp2__)
-		SceDateTime time;
-		sceRtcGetCurrentClockLocalTime(&time);
-		now = time.second;
+		SceRtcTick tick;
+		sceRtcGetCurrentTick(&tick);
+		now = (int)tick.tick / 1000000;
 #elif defined(_WIN32)
         struct timeval out;
         gettimeofday(&out, NULL);

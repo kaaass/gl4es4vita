@@ -95,7 +95,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <ProcessorNumber>16</ProcessorNumber>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
       <FastMath>true</FastMath>
     </ClCompile>
     <Link>
@@ -103,7 +103,8 @@
       <AdditionalDependencies>libSceRtcUser_stub.a</AdditionalDependencies>
       <AdditionalOptions>
       </AdditionalOptions>
-      <GenerateSnMapFile>FullMapFile</GenerateSnMapFile>
+      <GenerateSnMapFile>None</GenerateSnMapFile>
+      <InfoStripping>StripSymsAndDebug</InfoStripping>
     </Link>
     <PostBuildEvent>
       <Command>"$(SCE_PSP2_SDK_DIR)\host_tools\build\bin\vdsuite-libgen.exe" --output-kind VitasdkStub "$(SolutionDir)lib\vitasdk_out\libGL.yml" "$(OutDir)libGL_stub_vitasdk.a"</Command>

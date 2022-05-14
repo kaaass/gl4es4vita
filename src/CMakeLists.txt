@@ -199,6 +199,23 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     endif()
 elseif(STATICLIB)
     add_library(GL STATIC ${GL_SRC})
+elseif(VITA)
+    message("${GL_SRC}")
+    list(APPEND GL_SRC
+        ${CMAKE_CURRENT_SOURCE_DIR}/gl/gl4es_getenv.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/psp2/module.c
+    )
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wl,-q -Wall -O3 -std=gnu99 -nostdlib")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -fno-rtti -fno-exceptions")
+    add_executable(gl4es4vita ${GL_SRC})
+    target_link_libraries(gl4es4vita
+            SceLibc_stub
+            SceRtc_stub
+            gcc
+            c
+            )
+    vita_create_self(libGL.suprx gl4es4vita UNSAFE CONFIG ${CMAKE_SOURCE_DIR}/libGL.yml)
+    vita_create_stubs(stubs gl4es4vita ${CMAKE_SOURCE_DIR}/libGL.yml)
 else()
     add_library(GL SHARED ${GL_SRC})
     

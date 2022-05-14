@@ -1,12 +1,23 @@
 cmake_minimum_required(VERSION 2.8.12)
 
-project(gl4es LANGUAGES C)
+if(NOT DEFINED CMAKE_TOOLCHAIN_FILE)
+    if(DEFINED ENV{VITASDK})
+        set(CMAKE_TOOLCHAIN_FILE "$ENV{VITASDK}/share/vita.toolchain.cmake" CACHE PATH "toolchain file")
+    else()
+        message(FATAL_ERROR "Please define VITASDK to point to your SDK path!")
+    endif()
+endif()
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
+project(gl4es LANGUAGES C)
+include("$ENV{VITASDK}/share/vita.cmake" REQUIRED)
+
+#set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
 
 link_directories(${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
+
+option(VITA "vita" ON)
 
 option(PANDORA "Set to ON if targeting an OpenPandora device" ${PANDORA})
 option(PYRA "Set to ON if targeting an Dragonbox Pyra device" ${PYRA})
@@ -27,6 +38,21 @@ option(NO_INIT_CONSTRUCTOR "disable automatic initialization (useful for static 
 option(USE_ANDROID_LOG "Set to ON to use Android log instead of stdio" ${USE_ANDROID_LOG})
 option(EGL_WRAPPER "Set to ON to build EGL wrapper" ${EGL_WRAPPER})
 option(GLX_STUBS "Set to ON to build GLX function stubs" ${GLX_STUBS})
+
+if (VITA)
+    set(NO_GBM ON)
+    set(NOEGL ON)
+    set(NOX11 ON)
+    set(NO_LOADER ON)
+    set(NO_INIT_CONSTRUCTOR ON)
+    set(USE_CLOCK ON)
+    set(DEFAULT_ES 2)
+    set(_DEBUG ON)
+
+    add_definitions(-D__psp2__)
+    add_definitions(-DGL_GLEXT_PROTOTYPES)
+    add_definitions(-DPRX_MODULE)
+endif()
 
 include(CheckSymbolExists)
 check_symbol_exists(backtrace "execinfo.h" HAS_BACKTRACE)

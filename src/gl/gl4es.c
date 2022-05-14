@@ -3,8 +3,8 @@
 #if defined(AMIGAOS4) || (defined(NOX11) && defined(NOEGL) && !defined(_WIN32) && !defined(__psp2__))
 #include <sys/time.h>
 #elif defined(__psp2__)
-#include <kernel/processmgr.h>
-#include <rtc.h>
+#include <psp2/kernel/processmgr.h>
+#include <psp2/rtc.h>
 #endif // defined(AMIGAOS4) || (defined(NOX11) && defined(NOEGL)
 
 #include "../config.h"

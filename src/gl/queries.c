@@ -3,13 +3,13 @@
 #include <time.h>
 #ifdef __psp2__
 #define CLOCK_MONOTONIC_RAW 0
-#include <kernel/processmgr.h>
-#include <rtc.h>
+#include <psp2/kernel/processmgr.h>
+#include <psp2/rtc.h>
 
-struct timespec {
-	time_t tv_sec;
-	long tv_nsec;
-};
+//struct timespec {
+//	time_t tv_sec;
+//	long tv_nsec;
+//};
 
 #endif
 #else
@@ -82,13 +82,13 @@ void del_querie(GLuint querie) {
 }
 
 #ifdef __psp2__
-int clock_gettime(int clk_id, struct timespec *tp) {
+int clock_gettime(clockid_t clk_id, struct timespec *tp) {
 	if (clk_id == CLOCK_MONOTONIC_RAW)
 	{
-		SceKernelSysClock ticks;
-		sceKernelGetProcessTime(&ticks);
-		tp->tv_sec = ticks.quad / (1000 * 1000);
-		tp->tv_nsec = (ticks.quad * 1000) % (1000 * 1000 * 1000);
+        SceRtcTick ticks;
+        sceRtcGetCurrentTick(&ticks);
+		tp->tv_sec = ticks.tick / (1000 * 1000);
+		tp->tv_nsec = (ticks.tick * 1000) % (1000 * 1000 * 1000);
 		return 0;
 	}
 	return -1;

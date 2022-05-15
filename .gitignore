@@ -13,3 +13,4 @@ spec/yml/gles-1.1-full.yml
 *ipch
 .vs/
 PSVita_*
+cmake-*

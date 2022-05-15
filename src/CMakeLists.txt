@@ -200,7 +200,6 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 elseif(STATICLIB)
     add_library(GL STATIC ${GL_SRC})
 elseif(VITA)
-    message("${GL_SRC}")
     list(APPEND GL_SRC
         ${CMAKE_CURRENT_SOURCE_DIR}/gl/gl4es_getenv.c
         ${CMAKE_CURRENT_SOURCE_DIR}/psp2/module.c

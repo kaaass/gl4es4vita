@@ -17,8 +17,6 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/lib)
 
 link_directories(${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
 
-option(VITA "vita" ON)
-
 option(PANDORA "Set to ON if targeting an OpenPandora device" ${PANDORA})
 option(PYRA "Set to ON if targeting an Dragonbox Pyra device" ${PYRA})
 option(BCMHOST "Set to ON if targeting an RPi(2) device" ${BCMHOST})
@@ -27,6 +25,7 @@ option(GOA_CLONE "Set to ON if targeting GO Advance clones, like RG351p/v, Gamef
 option(ANDROID "Set to ON if targeting an Android device" ${ANDROID})
 option(CHIP "Set to ON if targeting an C.H.I.P. device" ${CHIP})
 option(AMIGAOS4 "Set to ON if targeting an AmigaOS4/Warp3D platform (activate NOEGL and NOX11)" ${AMIGAOS4})
+option(VITA "Set to ON if targeting an PS Vita device" ${VITA})
 option(NOX11 "Set to ON to not use X11 (creation of context has to be done outside gl4es)" ${NOX11})
 option(NOEGL "Set to ON to not use EGL (all functions are taken in GLES library)" ${NOEGL})
 option(STATICLIB "Set to ON to build a static version of gl4es" ${STATICLIB})
@@ -47,7 +46,6 @@ if (VITA)
     set(NO_INIT_CONSTRUCTOR ON)
     set(USE_CLOCK ON)
     set(DEFAULT_ES 2)
-    set(_DEBUG ON)
 
     add_definitions(-D__psp2__)
     add_definitions(-DGL_GLEXT_PROTOTYPES)
